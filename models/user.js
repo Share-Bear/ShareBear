@@ -48,7 +48,50 @@ function addUser(req,res,next) {
       console.log('Error ', error)
     })
 }
+//delete a user
+function deleteUser(req,res,next) {
+  db.any(`delete FROM users WHERE user_id=$1;`, [req.params.id])
+  .then(data => {
+      res.rows = data;
+      next();
+    })
+    .catch( error=> {
+      console.log('Error ', error)
+    })
+}
+function updateUser(req,res,next) {
+  db.any(`UPDATE users (user_name, email, address, zipcode) VALUES($1, $2, $3, $4);`, [req.body.user_name, req.body.email, req.body.address, req.body.zipcode])
+    .then(data => {
+      res.rows = data;
+      next();
+    })
+    .catch( error=> {
+      console.log('Error ', error)
+    })
+}
 
+//get a users borrowed items
+function userBorrowed(req,res,next) {
+  db.any(`SELECT * from items inner join users on items.borrower_id=users.user_id where user_id=$1;`, [req.params.id])
+    .then(data => {
+      res.rows = data;
+      next();
+    })
+    .catch( error=> {
+      console.log('Error ', error)
+    })
+}
+
+function userOwned(req,res,next) {
+  db.any(`SELECT item_name, owner_id, item_desc, borrower_id, checked_out from items inner join users on items.owner_id=users.user_id where user_id=$1;`, [req.params.id])
+    .then(data => {
+      res.rows = data;
+      next();
+    })
+    .catch( error=> {
+      console.log('Error ', error)
+    })
+}
 //export it to the controller
-module.exports = { getAllUsers, getUser, addUser};
+module.exports = { getAllUsers, getUser, addUser, userBorrowed, userOwned, deleteUser, updateUser};
 
