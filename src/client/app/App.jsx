@@ -4,6 +4,7 @@ import ReactDOM         from 'react-dom'
 
 import ajax             from '../helpers/ajaxAdapter.js'
 import util             from '../helpers/util.js'
+import ItemList         from './ItemList.jsx'
 
 
 // create a React Component called _App_
@@ -19,7 +20,7 @@ export default class App extends React.Component{
   }
   componentDidMount(){
     ajax.getItems().then( data=>
-      this.setState({items: data.indexByKey('items_id')})
+      this.setState({items: data.indexByKey('item_id')})
     )
   }
   addItems(newItem){
@@ -31,7 +32,10 @@ export default class App extends React.Component{
   }
   render(){
     return (
-      <h1> Welcome to ShareBear! </h1>
+      <container>
+        <h1> Welcome to ShareBear! </h1>
+        <ItemList list={this.state.items}/>
+      </container>
     )
   }
 }
