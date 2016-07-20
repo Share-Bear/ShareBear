@@ -4,14 +4,14 @@
 //make sure the database is correct in psql
 const pg = require('pg-promise')({});
 
-const pgConfig = {
-  host: process.env.PG_HOST,
-  port: process.env.PG_PORT,
-  database: 'sharebear',
-  user: process.env.PG_USER,
-  password: process.env.PG_PASSWORD
-}
-const db = pg(pgConfig);
+const config = {
+  host:       process.env.DB_HOST,
+  port:       process.env.DB_PORT,
+  database:   process.env.DB_NAME,
+  user:       process.env.DB_USER,
+  password:   process.env.DB_PASS,
+};
+const db = pg(config);
 
 //get all items that are using share bear
 function getAllItems(req,res,next) {
