@@ -6,7 +6,7 @@ const logger        = require('morgan');
 const app           = express();
 const bodyParser    = require('body-parser');
 const userRoute = require('./controllers/user.js');
-const itemsRoute = require('./controllers/items.js');
+const itemRoute = require('./controllers/item.js');
 const PORT          = process.argv[2] || process.env.port || 3000;
 
 app.use(logger('dev'))
