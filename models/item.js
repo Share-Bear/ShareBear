@@ -38,7 +38,7 @@ function getItem(req,res,next) {
 }
 
 function addItem(req,res,next) {
-  db.any(`INSERT INTO items(item_name, owner_id, item_desc) VALUES($1, $2, $3);`, [req.body.item_name, req.params.id, req.body.item_desc])
+  db.any(`INSERT INTO items(item_name, owner_id, item_desc) VALUES($1, $2, $3);`, [req.body.item_name, req.body.user_id, req.body.item_desc])
     .then(data => {
       res.rows = data;
       next();
@@ -69,6 +69,27 @@ function itemReturned(req,res,next) {
       console.log('Error ', error)
     })
 }
+function editItem(req,res,next) {
+  db.any(`UPDATE items(item_name, owner_id, item_desc) VALUES($1, $2, $3);`, [req.body.item_name, req.params.id, req.body.item_desc])
+    .then(data => {
+      res.rows = data;
+      next();
+    })
+    .catch( error=> {
+      console.log('Error ', error)
+    })
+}
+
+function deleteItem(req,res,next) {
+  db.any(`delete FROM items WHERE item_id=$1;`, [req.params.id])
+  .then(data => {
+      res.rows = data;
+      next();
+    })
+    .catch( error=> {
+      console.log('Error ', error)
+    })
+}
 
 //export it to the controller
-module.exports = { getAllItems, getItem, addItem, itemBorrowed, itemReturned};
+module.exports = { getAllItems, getItem, addItem, itemBorrowed, itemReturned, editItem, deleteItem};
