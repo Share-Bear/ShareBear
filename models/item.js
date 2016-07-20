@@ -26,7 +26,7 @@ function getAllItems(req,res,next) {
 }
 
 //get a specific items
-function getItems(req,res,next) {
+function getItem(req,res,next) {
   db.one(`SELECT * FROM items WHERE item_id=$1`, [req.params.id])
     .then(data => {
       res.rows = data;

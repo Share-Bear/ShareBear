@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const { getAllitems, getUser } = require('../models/item.js');
+const { getAllItems, getItem } = require('../models/item.js');
 
 // show all items
 router.get('/', getAllItems, (req,res) => {
