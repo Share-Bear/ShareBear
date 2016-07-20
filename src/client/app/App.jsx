@@ -8,10 +8,10 @@ import util             from '../helpers/util.js'
 
 // create a React Component called _App_
 export default class App extends React.Component{
-  constuctor(){
+  constructor(){
     super();
 
-    this.state={
+    this.state = {
       user:"",
       zip: 10025,
       items: {}
@@ -32,8 +32,6 @@ export default class App extends React.Component{
   render(){
     return (
       <h1> Welcome to ShareBear! </h1>
-      <h2> Check out all this awesome shit you borrow. </h2>
-      <ItemList />
     )
   }
 }

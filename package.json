@@ -20,7 +20,6 @@
     "url": "https://github.com/Share-Bear/ShareBear/issues"
   },
   "homepage": "https://github.com/Share-Bear/ShareBear#readme",
-
   "dependencies": {
     "body-parser": "^1.15.2",
     "express": "^4.14.0",
