@@ -40,7 +40,8 @@ function addItem(req,res,next) {
 }
 
 function itemsByZip(req,res,next) {
-  db.any(`SELECT item_name, owner_id, item_desc, borrower_id, checked_out from items inner join users on items.owner_id=users.user_id where zipcode=$1;`, [req.params.id])
+  console.log('items by zip model works')
+  db.any(`SELECT item_id, item_name, item_desc, owner_id, borrower_id, zipcode, checked_out from items inner join users on items.owner_id=users.user_id where zipcode=$1;`, [req.params.id])
     .then(data => {
       res.rows = data;
       next();
