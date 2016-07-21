@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const { getAllItems, getItem, addItem, itemBorrowed, itemReturned, deleteItem, editItem} = require('../models/item.js');
+const { getAllItems, getItem, addItem, itemBorrowed, itemReturned, deleteItem, editItem, itemsByZip} = require('../models/item.js');
 
 // show all items
 router.get('/', getAllItems, (req,res) => {
@@ -10,6 +10,16 @@ router.get('/', getAllItems, (req,res) => {
 router.get('/:id', getItem, (req,res) => {
   res.send(res.rows)
 });
+
+// Show a single item
+router.get('/:id', getItem, (req,res) => {
+  res.send(res.rows)
+});
+
+// Show a single item
+// router.get('/zip/:id', itemsByZip, (req,res) => {
+//   res.send(res.rows)
+// });
 
 //add a new item
 router.post('/new', addItem, (req,res) => {
