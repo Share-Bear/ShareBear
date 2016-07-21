@@ -16,8 +16,8 @@ export default class App extends React.Component{
 
     this.state = {
       user: 1,
-      zip: 10025,
-      localItems: {}
+      zip: 11233,
+      localItems: {},
       ownedItems: {},
     }
   }
@@ -27,14 +27,24 @@ export default class App extends React.Component{
       return item.owner_id === here.state.user
     }
     ajax.getItems().then( data=>{
+
       this.setState({localItems: data.indexByKey('item_id')})
       var filteredData =data.filter(currentUserItems)
-      console.log(filteredData)
       this.setState({ownedItems: filteredData})
     })
   }
-  getLocalItems(){
-    party=> {console.log("I SEARCHED")}
+  getLocalItems(event){
+    var here= this
+    function filterForZip(item){
+      return item.zipcode === here.state.zip
+    }
+    event.preventDefault()
+    ajax.getItems().then( data=>{
+      console.log(here.state.zip)
+      var localStuff = data.filter(filterForZip)
+      this.setState({localItems: localStuff})
+    })
+
     // Object.keys(ajax.getItems())
     //   .filter(key=>{return })
   }
@@ -46,12 +56,11 @@ export default class App extends React.Component{
       })
   }
 
-
   render(){
     return (
       <container>
         <h1> Welcome to ShareBear! </h1>
-        <ZipCode onSubmitSearch={getLocalItems} />
+        <ZipCode onSubmitSearch={this.getLocalItems.bind(this)} />
         <ItemList list={this.state.localItems}/>
         <UserOwnedList list={this.state.ownedItems} />
       </container>
