@@ -10,7 +10,7 @@ export default function ItemList(props) {
     <ul>
       {Object.keys(props.list)
         .map(key=>(
-          <li>
+          <li key={key}>
             <strong>{props.list[key].item_name}</strong> {props.list[key].item_desc}
             <button
               type="button"
