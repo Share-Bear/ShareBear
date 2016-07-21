@@ -23,26 +23,26 @@ router.get('/zip/:id', itemsByZip, (req,res) => {
 
 //add a new item
 router.post('/new', addItem, (req,res) => {
-    res.redirect('/items');
+    res.send(req.params.id)
 });
 
 //when a user edits an item
 router.put('/:id', editItem, (req,res) => {
-    res.redirect('/items');
+    res.send(req.params.id)
 });
 //Delete an item
-router.delete('/:id', editItem, (req,res) => {
-    res.redirect('/items');
+router.delete('/:id', deleteItem, (req,res) => {
+  res.send(req.params.id)
 });
 
 //when a user borrows an item
 router.put('/:id/borrow', itemBorrowed, (req,res) => {
-    res.redirect('/items');
+    res.send(req.params.id)
 });
 
 //when a user returns a borrowed item
 router.put('/:id/return', itemReturned, (req,res) => {
-    res.redirect('/items');
+    res.send(req.params.id)
 });
 
 //export it to a the server.js

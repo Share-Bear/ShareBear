@@ -1,20 +1,21 @@
 'use strict'
 import React            from 'react';
 
-export default function UserOwnedList(props) {
+export default function UserBorrowedList(props) {
     return(
     <div className="list-group">
-      {Object.keys(props.list)
-        .map(key=>(
-          <button
-            type="button"
-            className="list-group-item"
-            key={key}>
-            <strong>{props.list[key].item_name}</strong> {props.list[key].item_desc}
-          </button>
-        ))
-      }
-
+      <ul>
+        {Object.keys(props.list)
+          .map(key=>(
+            <li
+              key={key}>
+              <strong>{props.list[key].item_name}</strong> {props.list[key].item_desc}
+              <button type="submit">
+              Returned</button>
+            </li>
+          ))
+        }
+      </ul>
     </div>
   )
  }

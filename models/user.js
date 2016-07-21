@@ -75,7 +75,7 @@ function userBorrowed(req,res,next) {
 }
 
 function userOwned(req,res,next) {
-  db.any(`SELECT item_name, owner_id, item_desc, borrower_id, checked_out from items inner join users on items.owner_id=users.user_id where user_id=$1;`, [req.params.id])
+  db.any(`SELECT item_id, item_name, owner_id, item_desc, borrower_id, checked_out from items inner join users on items.owner_id=users.user_id where user_id=$1;`, [req.params.id])
     .then(data => {
       res.rows = data;
       next();

@@ -17,6 +17,23 @@ const ajaxAdapter ={
   getBorrowedItems(user){
     return fetch(`/users/${user}/borrow`)
         .then(r => r.json())
+  },
+  deleteItem(item){
+    return fetch(`/items/${item}`,{
+      method: 'DELETE',
+      headers: {
+        "Content-type": "application/json; charset=UTF-8"
+      }
+    }).then( r=> r.json() )
   }
+  returnItem(item){
+    return fetch(`/items/${item}/borrow`,{
+      method: 'PUT',
+      headers: {
+        "Content-type": "application/json; charset=UTF-8"
+      }
+    }).then( r=> r.json() )
+  }
+
 }
 export default ajaxAdapter;
