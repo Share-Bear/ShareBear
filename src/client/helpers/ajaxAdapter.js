@@ -27,12 +27,16 @@ const ajaxAdapter ={
     }).then( r=> r.json() )
   },
   returnItem(item){
-    return fetch(`/items/${item}`,{
+    console.log('ajax return item')
+    return fetch(`/items/${item}/return`,{
       method: 'PUT',
       headers: {
         "Content-type": "application/json; charset=UTF-8"
       }
-    }).then( r=> r.json() )
+    }).then( r=> {
+      console.log(r)
+      r.json()
+    })
   }
 
 }
