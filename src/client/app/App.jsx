@@ -33,8 +33,11 @@ export default class App extends React.Component{
       this.setState({borrowedItems: data.indexByKey('item_id')})
     })
   }
-  getLocalItems(event){
+  updateZip(event){
     event.preventDefault();
+    let zipNew = event.target.firstChild.value;
+    this.setState({zip: zipNew})
+
     let myZip = this.state.zip;
     let myItems = this.state.localItems;
     ajax.getItemsByZip(myZip)
@@ -42,9 +45,6 @@ export default class App extends React.Component{
         this.setState({localItems: data.indexByKey('item_id')})
         console.log(this.state.localItems)
       })
-
-    // Object.keys(ajax.getItems())
-    //   .filter(key=>{return })
   }
   addItems(newItem){
     ajax.addItem(newItem)
@@ -69,9 +69,12 @@ export default class App extends React.Component{
     return (
       <container>
         <h1> Welcome to ShareBear! </h1>
-        <ZipCode onSubmitSearch={this.getLocalItems.bind(this)} />
-        <ItemList list={this.state.localItems} />
+
+        <ZipCode zip={this.updateZip.bind(this)} />
+        <ItemList list={this.state.localItems}/>
         <UserOwnedList list={this.state.ownedItems} onSubmitDelete= {this.onSubmitDelete.bind(this)} />
+        <UserOwnedList list={this.state.ownedItems} />
+>>>>>>> 229bc3cc829a5391a446e899bc3da2d39cbe66ef
         <UserBorrowedList list={this.state.borrowedItems} />
       </container>
     )

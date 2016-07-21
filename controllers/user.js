@@ -8,7 +8,7 @@ router.get('/', getAllUsers, (req,res) => {
 
 //add a new user
 router.post('/new', addUser, (req,res) => {
-    res.redirect('/users');
+    res.send(req.params.id)
 });
 
 
@@ -28,12 +28,12 @@ router.get('/:id/own', userOwned, (req,res) => {
 
 // Edit user
 router.put('/:id', updateUser, (req,res) => {
-  res.redirect('/user');
+  res.send(req.params.id)
 });
 
 //delete a user
 router.delete('/:id', deleteUser, (req,res) => {
-  res.redirect('/user');
+  res.send(req.params.id)
 })
 //export it to a the server.js
 module.exports = router;
