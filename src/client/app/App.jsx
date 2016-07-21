@@ -16,7 +16,7 @@ export default class App extends React.Component{
 
     this.state = {
       user: 1,
-      zip: 11233,
+      zip: 11230,
       localItems: {},
       ownedItems: {},
     }
@@ -34,16 +34,14 @@ export default class App extends React.Component{
     })
   }
   getLocalItems(event){
-    var here= this
-    function filterForZip(item){
-      return item.zipcode === here.state.zip
-    }
-    event.preventDefault()
-    ajax.getItems().then( data=>{
-      console.log(here.state.zip)
-      var localStuff = data.filter(filterForZip)
-      this.setState({localItems: localStuff})
-    })
+    event.preventDefault();
+    let myZip = this.state.zip;
+    let myItems = this.state.localItems;
+    ajax.getItemsByZip(myZip)
+      .then( data=>{
+        console.log(myZip)
+        this.setState({localItems: data.indexByKey('item_id')})
+      })
 
     // Object.keys(ajax.getItems())
     //   .filter(key=>{return })
