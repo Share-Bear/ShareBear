@@ -5,6 +5,7 @@ import ReactDOM         from 'react-dom'
 import ajax             from '../helpers/ajaxAdapter.js'
 import util             from '../helpers/util.js'
 import ItemList         from './ItemList.jsx'
+import ZipCode          from './ZipCode.jsx'
 import UserOwnedList    from './Ownedlist.jsx'
 
 
@@ -16,7 +17,7 @@ export default class App extends React.Component{
     this.state = {
       user: 1,
       zip: 10025,
-      items: {},
+      localItems: {}
       ownedItems: {},
     }
   }
@@ -26,39 +27,32 @@ export default class App extends React.Component{
       return item.owner_id === here.state.user
     }
     ajax.getItems().then( data=>{
-      this.setState({items: data.indexByKey('item_id')})
+      this.setState({localItems: data.indexByKey('item_id')})
       var filteredData =data.filter(currentUserItems)
       console.log(filteredData)
       this.setState({ownedItems: filteredData})
     })
   }
+  getLocalItems(){
+    party=> {console.log("I SEARCHED")}
+    // Object.keys(ajax.getItems())
+    //   .filter(key=>{return })
+  }
   addItems(newItem){
     ajax.addItem(newItem)
       .then(data=>{
-        this.state.items[ data.item_id ] = data
-        this.setState({items: this.state.items})
+        this.state.localItems[ data.item_id ] = data
+        this.setState({localItems: this.state.localItems})
       })
   }
 
-  whichUser(user){
-    console.log(this.state.user)
-    var here= this
-    console.log(here.state.user)
-    function currentUserItems(item){
-
-      return item.owner_id === here.state.user
-    }
-    ajax.getItems().then( data=>{
-      console.log(data)
-      var filteredData =data.filter(currentUserItems)
-      })
-  }
 
   render(){
     return (
       <container>
         <h1> Welcome to ShareBear! </h1>
-        <ItemList list={this.state.items}/>
+        <ZipCode onSubmitSearch={getLocalItems} />
+        <ItemList list={this.state.localItems}/>
         <UserOwnedList list={this.state.ownedItems} />
       </container>
     )
