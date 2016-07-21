@@ -67,14 +67,13 @@ export default class App extends React.Component{
 
   render(){
     return (
-      <container>
+      <container className="container-fluid">
         <h1> Welcome to ShareBear! </h1>
-
         <ZipCode zip={this.updateZip.bind(this)} />
+        <section className="listedItems">
         <ItemList list={this.state.localItems}/>
+        </section>
         <UserOwnedList list={this.state.ownedItems} onSubmitDelete= {this.onSubmitDelete.bind(this)} />
-        <UserOwnedList list={this.state.ownedItems} />
->>>>>>> 229bc3cc829a5391a446e899bc3da2d39cbe66ef
         <UserBorrowedList list={this.state.borrowedItems} />
       </container>
     )
