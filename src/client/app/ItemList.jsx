@@ -14,7 +14,9 @@ export default function ItemList(props) {
             <strong>{props.list[key].item_name}</strong> {props.list[key].item_desc}
             <button
               type="button"
-              key={key}>
+              key={key}
+              onClick={props.onSubmitBorrow}
+              value={props.list[key].item_id}>
               borrow this!
             </button>
           </li>
