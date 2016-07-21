@@ -10,7 +10,7 @@ export default function UserBorrowedList(props) {
             <li
               key={key}>
               <strong>{props.list[key].item_name}</strong> {props.list[key].item_desc}
-              <button type="submit">
+              <button type="submit" onClick={props.onSubmitReturn} value={props.list[key].item_id}>
               Returned</button>
             </li>
           ))
