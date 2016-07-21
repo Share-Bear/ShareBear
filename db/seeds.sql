@@ -12,9 +12,9 @@ INSERT INTO users (user_name, email, address, zipcode) VALUES
 
 
 
-INSERT INTO items(item_name, owner_id, item_desc) VALUES
-('shovel', 1, 'cool shovel check it out' ),
-('rake', 3, 'my rake is $$$$$$' ),
-('rake', 1, 'pretty bad not gonna lie' ),
-('power washer', 4, null );
+INSERT INTO items(item_name, owner_id, item_desc, checked_out, borrower_id) VALUES
+('shovel', 1, 'cool shovel check it out',true, 2 ),
+('rake', 3, 'my rake is $$$$$$', true, 1 ),
+('rake', 1, 'pretty bad not gonna lie', false, null ),
+('power washer', 4, null, false, null );
 
