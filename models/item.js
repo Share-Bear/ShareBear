@@ -38,6 +38,17 @@ function addItem(req,res,next) {
       console.log('Error ', error)
     })
 }
+
+// function itemsByZip(req,res,next) {
+//   db.any(`SELECT item_name, owner_id, item_desc, borrower_id, checked_out from items inner join users on items.owner_id=users.user_id where zipcode=$1;`, [req.params.id])
+//     .then(data => {
+//       res.rows = data;
+//       next();
+//     })
+//     .catch( error=> {
+//       console.log('Error ', error)
+//     })
+// }
 //when a user borrows an item
 function itemBorrowed(req,res,next) {
   db.any(`UPDATE items(borrower_id, checked_out) VALUES($1, true) where item_id=$2;`, [req.body.user_id, req.params.id])
