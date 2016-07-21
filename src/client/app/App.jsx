@@ -57,8 +57,9 @@ export default class App extends React.Component{
     event.preventDefault();
     var item=event.target.value
     console.log(item)
-    ajax.borrowItem(item)
+    ajax.borrowItem(item, this.state.user)
     .then(data=>{
+      this.state.borrowedItems
       this.setState({borrowedItems: this.state.borrowedItems})
     })
   }

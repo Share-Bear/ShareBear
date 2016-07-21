@@ -36,7 +36,7 @@ router.delete('/:id', deleteItem, (req,res) => {
 });
 
 //when a user borrows an item
-router.put('/:id/borrow', itemBorrowed, (req,res) => {
+router.put('/:id/borrow', itemBorrowed, getAllItems, (req,res) => {
     res.send(req.params.id)
 });
 
