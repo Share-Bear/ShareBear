@@ -17,9 +17,9 @@ router.get('/:id', getItem, (req,res) => {
 });
 
 // Show a single item
-// router.get('/zip/:id', itemsByZip, (req,res) => {
-//   res.send(res.rows)
-// });
+router.get('/zip/:id', itemsByZip, (req,res) => {
+  res.send(res.rows)
+});
 
 //add a new item
 router.post('/new', addItem, (req,res) => {
