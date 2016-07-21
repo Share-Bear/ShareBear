@@ -1,8 +1,7 @@
 'use strict'
 import React            from 'react';
 
-export default function ItemList(props) {
-
+export default function UserOwnedList(props) {
   return(
     <div className="list-group">
     {console.log(props.list)}
