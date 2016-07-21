@@ -27,10 +27,10 @@ export default class App extends React.Component{
       this.setState({localItems: data.indexByKey('item_id')})
     })
     ajax.getOwnedItems(this.state.user).then(data=>{
-      this.setState({ownedItems: data})
+      this.setState({ownedItems: data.indexByKey('item_id')})
     })
     ajax.getBorrowedItems(this.state.user).then(data=>{
-      this.setState({borrowedItems: data})
+      this.setState({borrowedItems: data.indexByKey('item_id')})
     })
   }
   getLocalItems(event){
@@ -53,14 +53,25 @@ export default class App extends React.Component{
         this.setState({localItems: this.state.localItems})
       })
   }
+  onSubmitDelete(event){
+    event.preventDefault();
+    var item=event.target.value
+    console.log(this.state.ownedItems[ item ])
+    ajax.deleteItem(item)
+    .then(data=>{
+      delete this.state.ownedItems[ item ] ;
+      this.setState({ownedItems: this.state.ownedItems})
+    })
+    console.log(this.state.ownedItems)
+  }
 
   render(){
     return (
       <container>
         <h1> Welcome to ShareBear! </h1>
         <ZipCode onSubmitSearch={this.getLocalItems.bind(this)} />
-        <ItemList list={this.state.localItems}/>
-        <UserOwnedList list={this.state.ownedItems} />
+        <ItemList list={this.state.localItems} />
+        <UserOwnedList list={this.state.ownedItems} onSubmitDelete= {this.onSubmitDelete.bind(this)} />
         <UserBorrowedList list={this.state.borrowedItems} />
       </container>
     )

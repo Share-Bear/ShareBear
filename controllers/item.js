@@ -31,8 +31,8 @@ router.put('/:id', editItem, (req,res) => {
     res.redirect('/items');
 });
 //Delete an item
-router.delete('/:id', editItem, (req,res) => {
-    res.redirect('/items');
+router.delete('/:id', deleteItem, (req,res) => {
+  res.send(req.params.id)
 });
 
 //when a user borrows an item
