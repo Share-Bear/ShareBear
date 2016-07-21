@@ -64,6 +64,7 @@ function itemBorrowed(req,res,next) {
 //when a user returns an item
 function itemReturned(req,res,next) {
   db.any(`UPDATE items(borrower_id, checked_out) VALUES(NULL, false) where item_id=$1;`, [req.params.id])
+    console.log('RETURNEDD!!!!')
     .then(data => {
       res.rows = data;
       next();

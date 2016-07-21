@@ -64,7 +64,18 @@ export default class App extends React.Component{
     })
     console.log(this.state.ownedItems)
   }
+  onSubmitReturn(event){
+    event.preventDefault();
+    var item=event.target.value
+    console.log(this.state.borrowedItems[ item ])
+    ajax.returnItem(item)
+    .then(data=>{
+      console.log('hello')
+      delete this.state.borrowedItems[ item ] ;
+      this.setState({BorrowedItems: this.state.BorrowedItems})
+    })
 
+  }
   render(){
     return (
       <container>
@@ -73,9 +84,7 @@ export default class App extends React.Component{
         <ZipCode zip={this.updateZip.bind(this)} />
         <ItemList list={this.state.localItems}/>
         <UserOwnedList list={this.state.ownedItems} onSubmitDelete= {this.onSubmitDelete.bind(this)} />
-        <UserOwnedList list={this.state.ownedItems} />
->>>>>>> 229bc3cc829a5391a446e899bc3da2d39cbe66ef
-        <UserBorrowedList list={this.state.borrowedItems} />
+        <UserBorrowedList list={this.state.borrowedItems} onSubmitReturn= {this.onSubmitReturn.bind(this)} />
       </container>
     )
   }
