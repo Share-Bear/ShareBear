@@ -5,6 +5,7 @@ import ReactDOM         from 'react-dom'
 import ajax             from '../helpers/ajaxAdapter.js'
 import util             from '../helpers/util.js'
 import ItemList         from './ItemList.jsx'
+import ZipCode          from './ZipCode.jsx'
 
 
 // create a React Component called _App_
@@ -15,26 +16,32 @@ export default class App extends React.Component{
     this.state = {
       user:"",
       zip: 10025,
-      items: {}
+      localItems: {}
     }
   }
   componentDidMount(){
     ajax.getItems().then( data=>
-      this.setState({items: data.indexByKey('item_id')})
+      this.setState({localItems: data.indexByKey('item_id')})
     )
+  }
+  getLocalItems(){
+    party=> {console.log("I SEARCHED")}
+    // Object.keys(ajax.getItems())
+    //   .filter(key=>{return })
   }
   addItems(newItem){
     ajax.addItem(newItem)
       .then(data=>{
-        this.state.items[ data.item_id ] = data
-        this.setState({tasks: this.state.items})
+        this.state.localItems[ data.item_id ] = data
+        this.setState({localItems: this.state.localItems})
       })
   }
   render(){
     return (
       <container>
         <h1> Welcome to ShareBear! </h1>
-        <ItemList list={this.state.items}/>
+        <ZipCode onSubmitSearch={getLocalItems} />
+        <ItemList list={this.state.localItems}/>
       </container>
     )
   }

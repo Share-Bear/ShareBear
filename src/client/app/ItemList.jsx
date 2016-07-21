@@ -1,7 +1,7 @@
 'use strict'
 import React            from 'react';
 
-export default function TaskList(props) {
+export default function ItemList(props) {
 
   return(
     <div className="list-group">
