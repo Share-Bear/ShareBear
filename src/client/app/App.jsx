@@ -39,8 +39,8 @@ export default class App extends React.Component{
     let myItems = this.state.localItems;
     ajax.getItemsByZip(myZip)
       .then( data=>{
-        console.log(myZip)
         this.setState({localItems: data.indexByKey('item_id')})
+        console.log(this.state.localItems)
       })
 
     // Object.keys(ajax.getItems())
