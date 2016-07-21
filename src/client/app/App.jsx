@@ -73,8 +73,6 @@ export default class App extends React.Component{
         <ZipCode zip={this.updateZip.bind(this)} />
         <ItemList list={this.state.localItems}/>
         <UserOwnedList list={this.state.ownedItems} onSubmitDelete= {this.onSubmitDelete.bind(this)} />
-        <UserOwnedList list={this.state.ownedItems} />
->>>>>>> 229bc3cc829a5391a446e899bc3da2d39cbe66ef
         <UserBorrowedList list={this.state.borrowedItems} />
       </container>
     )
