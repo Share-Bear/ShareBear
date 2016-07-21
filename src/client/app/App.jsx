@@ -7,7 +7,7 @@ import util             from '../helpers/util.js'
 import ItemList         from './ItemList.jsx'
 import ZipCode          from './ZipCode.jsx'
 import UserOwnedList    from './Ownedlist.jsx'
-
+import UserBorrowedList    from './Borrowedlist.jsx'
 
 // create a React Component called _App_
 export default class App extends React.Component{
@@ -19,18 +19,18 @@ export default class App extends React.Component{
       zip: 11230,
       localItems: {},
       ownedItems: {},
+      borrowedItems:{}
     }
   }
   componentDidMount(){
-    var here= this
-    function currentUserItems(item){
-      return item.owner_id === here.state.user
-    }
     ajax.getItems().then( data=>{
-
       this.setState({localItems: data.indexByKey('item_id')})
-      var filteredData =data.filter(currentUserItems)
-      this.setState({ownedItems: filteredData})
+    })
+    ajax.getOwnedItems(this.state.user).then(data=>{
+      this.setState({ownedItems: data})
+    })
+    ajax.getBorrowedItems(this.state.user).then(data=>{
+      this.setState({borrowedItems: data})
     })
   }
   getLocalItems(event){
@@ -61,6 +61,7 @@ export default class App extends React.Component{
         <ZipCode onSubmitSearch={this.getLocalItems.bind(this)} />
         <ItemList list={this.state.localItems}/>
         <UserOwnedList list={this.state.ownedItems} />
+        <UserBorrowedList list={this.state.borrowedItems} />
       </container>
     )
   }
