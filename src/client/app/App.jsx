@@ -53,6 +53,16 @@ export default class App extends React.Component{
         this.setState({localItems: this.state.localItems})
       })
   }
+  onSubmitBorrow(event){
+    event.preventDefault();
+    var item=event.target.value
+    console.log(item)
+    ajax.borrowItem(item, this.state.user)
+    .then(data=>{
+      this.state.borrowedItems
+      this.setState({borrowedItems: this.state.borrowedItems})
+    })
+  }
   onSubmitDelete(event){
     event.preventDefault();
     var item=event.target.value
@@ -82,7 +92,7 @@ export default class App extends React.Component{
         <h1> Welcome to ShareBear! </h1>
 
         <ZipCode zip={this.updateZip.bind(this)} />
-        <ItemList list={this.state.localItems}/>
+        <ItemList list={this.state.localItems} onSubmitBorrow= {this.onSubmitBorrow.bind(this)}/>
         <UserOwnedList list={this.state.ownedItems} onSubmitDelete= {this.onSubmitDelete.bind(this)} />
         <UserBorrowedList list={this.state.borrowedItems} onSubmitReturn= {this.onSubmitReturn.bind(this)} />
       </container>

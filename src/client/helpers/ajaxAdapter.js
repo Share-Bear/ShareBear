@@ -26,6 +26,15 @@ const ajaxAdapter ={
       }
     }).then( r=> r.json() )
   },
+  borrowItem(item, user){
+    return fetch(`/items/${item}/borrow`, {
+      method: 'PUT',
+      headers: {
+        "Content-type": "application/json; charset=UTF-8"
+      },
+      body: JSON.stringify({user: user})
+    }).then( r=> r.json() )
+  },
   returnItem(item){
     console.log('ajax return item')
     return fetch(`/items/${item}/return`,{
