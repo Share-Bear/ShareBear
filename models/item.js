@@ -49,7 +49,7 @@ function addItem(req,res,next) {
 }
 //when a user borrows an item
 function itemBorrowed(req,res,next) {
-  db.any(`INERT INTO items(borrower_id, checked_out) VALUES($1, true) where item_id=$2;`, [req.body.user_id, req.params.id])
+  db.any(`UPDATE items(borrower_id, checked_out) VALUES($1, true) where item_id=$2;`, [req.body.user_id, req.params.id])
     .then(data => {
       res.rows = data;
       next();
@@ -60,7 +60,7 @@ function itemBorrowed(req,res,next) {
 }
 //when a user returns an item
 function itemReturned(req,res,next) {
-  db.any(`INERT INTO items(borrower_id, checked_out) VALUES(NULL, false) where item_id=$1;`, [req.params.id])
+  db.any(`UPDATE items(borrower_id, checked_out) VALUES(NULL, false) where item_id=$1;`, [req.params.id])
     .then(data => {
       res.rows = data;
       next();
