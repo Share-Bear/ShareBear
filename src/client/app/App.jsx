@@ -23,8 +23,14 @@ export default class App extends React.Component{
     }
   }
   componentDidMount(){
+    const here = this;
     ajax.getItems().then( data=>{
-      this.setState({localItems: data.indexByKey('item_id')})
+      function forRightUser(item) {
+        console.log('hello')
+        return item.owner_id === here.state.user
+      }
+      var filtered = data.filter(forRightUser);
+      this.setState({localItems: filtered.indexByKey('item_id')})
     })
     ajax.getOwnedItems(this.state.user).then(data=>{
       this.setState({ownedItems: data.indexByKey('item_id')})
