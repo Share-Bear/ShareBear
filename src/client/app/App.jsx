@@ -59,7 +59,10 @@ export default class App extends React.Component{
     console.log(item)
     ajax.borrowItem(item, this.state.user)
     .then(data=>{
-      this.state.borrowedItems
+      var moved = (this.state.localItems[ data ]);
+      this.state.borrowedItems[moved.item_id] = moved
+      delete this.state.localItems[ data ]
+      this.setState({localItems: this.state.localItems})
       this.setState({borrowedItems: this.state.borrowedItems})
     })
   }
@@ -80,8 +83,10 @@ export default class App extends React.Component{
     console.log(this.state.borrowedItems[ item ])
     ajax.returnItem(item)
     .then(data=>{
-      console.log('hello')
+      let moved = (this.state.borrowedItems[ item ]);
+      this.state.localItems[moved.item_id] = moved
       delete this.state.borrowedItems[ item ] ;
+      this.setState({localItems: this.state.localItems})
       this.setState({BorrowedItems: this.state.BorrowedItems})
     })
 
