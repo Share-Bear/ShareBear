@@ -26,13 +26,26 @@ const ajaxAdapter ={
       }
     }).then( r=> r.json() )
   },
+  borrowItem(item, user){
+    return fetch(`/items/${item}/borrow`, {
+      method: 'PUT',
+      headers: {
+        "Content-type": "application/json; charset=UTF-8"
+      },
+      body: JSON.stringify({user: user})
+    }).then( r=> r.json() )
+  },
   returnItem(item){
-    return fetch(`/items/${item}/borrow`,{
+    console.log('ajax return item')
+    return fetch(`/items/${item}/return`,{
       method: 'PUT',
       headers: {
         "Content-type": "application/json; charset=UTF-8"
       }
-    }).then( r=> r.json() )
+    }).then( r=> {
+      console.log(r)
+      r.json()
+    })
   }
 
 }

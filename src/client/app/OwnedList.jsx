@@ -4,6 +4,7 @@ import React            from 'react';
 export default function UserOwnedList(props) {
   return(
     <div className="list-group">
+    <h2>I OWN THIS STUFF</h2>
     {console.log(props.list)}
       <ul>
         {Object.keys(props.list)
