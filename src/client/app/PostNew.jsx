@@ -16,7 +16,6 @@ export default class PostNew extends React.Component{
   }
 
   close() {
-    console.log(this)
     this.setState({ showModal: false });
   }
 
@@ -28,9 +27,11 @@ export default class PostNew extends React.Component{
     event.preventDefault();
     const newItem= {
       name: event.target.elements.item_name.value,
-      desc: event.target.elements.item_desc.value
+      desc: event.target.elements.item_desc.value,
+      owner: event.target.elements.owner_id.value
     }
-    props.addItem(newItem);
+    console.log('this is the object generated in PostNew.jsx', newItem)
+    this.props.addItem(newItem);
   }
   render(){
     return(
@@ -47,9 +48,10 @@ export default class PostNew extends React.Component{
           <Modal.Header closeButton>
             <Modal.Title> Post an item you'd like to loan!</Modal.Title>
           </Modal.Header>
-          <form onSubmit = {this.handleSubmit}>
+          <form onSubmit = {this.handleSubmit.bind(this)}>
             <input type="text" className="form-control input-lg" name="item_name" placeholder="Name of Item" />
-            <input type="text" className="form-control input-lg" name="item_desc" placeholder="Name of Item" />
+            <input type="text" className="form-control input-lg" name="item_desc" placeholder="Desc of Item" />
+            <input type="text" className="form-control input-lg" name="owner_id" placeholder="User ID" />
             <Button type="submit" onClick={this.close.bind(this)}>Submit</Button>
           </form>
         </Modal>

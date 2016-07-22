@@ -27,7 +27,6 @@ export default class App extends React.Component{
 
   componentDidMount(){
     const here = this;
-    console.log('mounte')
     ajax.getBorrowedItems(this.state.user).then(data=>{
       this.setState({borrowedItems: data.indexByKey('item_id')})
     })
@@ -65,11 +64,12 @@ export default class App extends React.Component{
 
 
   addItems(newItem){
-    ajax.addItem(newItem)
-      .then(data=>{
-        this.state.ownedItems[ data.item_id ] = data
-        this.setState({ownedItems: this.state.localItems})
-      })
+    console.log('this is the object generated in App.jsx', newItem)
+    ajax.addNewItem(newItem)
+      //  .then(data=>{
+      //   this.state.ownedItems[ data.item_id ] = data
+      //   this.setState({ownedItems: this.state.ownedItems})
+      // })
   }
 
   onSubmitBorrow(event){
@@ -111,19 +111,19 @@ export default class App extends React.Component{
 
   render(){
     return (
-<container className="">
-  <div className="jumbotron">
-    <h1>Welcome to ShareBear!</h1>
-  </div>
-  <div className="outer">
-    <ZipCode zip={this.updateZip.bind(this)} />
-    <PostNew addItem={this.addItems.bind(this)} />
-    <ItemList list={this.state.localItems} onSubmitBorrow= {this.onSubmitBorrow.bind(this)}/>
-    <UserOwnedList list={this.state.ownedItems} onSubmitDelete= {this.onSubmitDelete.bind(this)} />
-    <UserBorrowedList list={this.state.borrowedItems} onSubmitReturn= {this.onSubmitReturn.bind(this)} />
-  </div>
-  <Footer />
-</container>
+      <container className="">
+        <div className="jumbotron">
+          <h1>Welcome to ShareBear!</h1>
+        </div>
+        <div className="outer">
+          <ZipCode zip={this.updateZip.bind(this)} />
+          <PostNew addItem={this.addItems.bind(this)} />
+          <ItemList list={this.state.localItems} onSubmitBorrow= {this.onSubmitBorrow.bind(this)}/>
+          <UserOwnedList list={this.state.ownedItems} onSubmitDelete= {this.onSubmitDelete.bind(this)} />
+          <UserBorrowedList list={this.state.borrowedItems} onSubmitReturn= {this.onSubmitReturn.bind(this)} />
+        </div>
+        <Footer />
+      </container>
     )
   }
 }

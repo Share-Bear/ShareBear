@@ -3,8 +3,6 @@ const { getAllUsers, getUser, addUser, userBorrowed, userOwned, updateUser, dele
 
 const tokenService = require('../models/tokens.js')
 
-// router.use( tokenService.validateToken )
-
 // show all users
 router.get('/', getAllUsers, (req,res) => {
   res.json( res.users.map( user=>{
@@ -20,13 +18,14 @@ router.post('/new', addUser, (req,res) => {
     res.send(req.params.id)
 });
 
+// router.use( tokenService.validateToken )
 
 // Show a single user
-router.get('/:id', getUser, (req,res) => {
+router.get('/:id', getUser, tokenService.createToken, (req,res) => {
   res.send(res.rows)
 });
 
-router.post('/authenticate', getUser, tokenService.createToken, (req,res)=> {
+router.post('/authenticate', (req,res)=> {
   res.send(res.rows)
 })
 //show all from a users borrowed items
