@@ -45,7 +45,20 @@ const ajaxAdapter ={
       r.json()
     })
   },
-
+  addNewItem(item, name, desc, owner){
+    return fetch(`/items/${item}`, {
+      method: 'POST',
+      headers: {
+        "Content-type": "application/json; charset=UTF-8"
+      },
+      body : JSON.stringify({
+        item_name: name,
+        item_desc: desc})
+      }).then( r=> {
+        console.log(r)
+        r.json()
+    })
+  },
   updateItem(item, name, desc){
     return fetch(`/items/${item}`, {
       method: 'PUT',

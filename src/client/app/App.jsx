@@ -67,8 +67,8 @@ export default class App extends React.Component{
   addItems(newItem){
     ajax.addItem(newItem)
       .then(data=>{
-        this.state.localItems[ data.item_id ] = data
-        this.setState({localItems: this.state.localItems})
+        this.state.ownedItems[ data.item_id ] = data
+        this.setState({ownedItems: this.state.localItems})
       })
   }
 
@@ -126,7 +126,7 @@ export default class App extends React.Component{
   </div>
   <div className="outer">
     <ZipCode zip={this.updateZip.bind(this)} />
-    <PostNew />
+    <PostNew addItem={this.addItems.bind(this)} />
     <ItemList list={this.state.localItems} onSubmitBorrow= {this.onSubmitBorrow.bind(this)}/>
     <UserOwnedList list={this.state.ownedItems} onSubmitDelete= {this.onSubmitDelete.bind(this)} edit={this.handleEditButton.bind(this)} />
     <UserBorrowedList list={this.state.borrowedItems} onSubmitReturn= {this.onSubmitReturn.bind(this)} />
