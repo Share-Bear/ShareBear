@@ -52,11 +52,7 @@ function itemsByZip(req,res,next) {
 }
 //when a user borrows an item
 function itemBorrowed(req,res,next) {
-<<<<<<< HEAD
   db.any(`UPDATE items set borrower_id=$1, checked_out=true where item_id=$2;`, [req.body.user, req.params.id])
-=======
-  db.any(`UPDATE items(borrower_id, checked_out) VALUES($1, true) where item_id=$2;`, [req.body.user_id, req.params.id])
->>>>>>> 4ad9286b70b78a3dafacc9efa1400d5c64dd9304
     .then(data => {
       console.log(req.body)
       res.rows = data;
@@ -68,12 +64,8 @@ function itemBorrowed(req,res,next) {
 }
 //when a user returns an item
 function itemReturned(req,res,next) {
-<<<<<<< HEAD
   console.log('hello')
   db.any(`UPDATE items set borrower_id=NULL, checked_out=false where item_id=$1;`, [req.params.id])
-=======
-  db.any(`UPDATE items(borrower_id, checked_out) VALUES(NULL, false) where item_id=$1;`, [req.params.id])
->>>>>>> 4ad9286b70b78a3dafacc9efa1400d5c64dd9304
     .then(data => {
       console.log('RETURNEDD!!!!')
       res.rows = data;
