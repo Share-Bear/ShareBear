@@ -5,14 +5,14 @@ export default function ItemList(props) {
 
   return(
     <div className="list-group">
-    <h2> Available Items Near You </h2>
-    {console.log(props.list)}
-    <ul>
-      {Object.keys(props.list)
+      <h2> Available Items Near You </h2>
+      {console.log(props.list)}
+      <ul>
+        {Object.keys(props.list)
         .map(key=>(
-          <li key={key}>
-            <strong>{props.list[key].item_name}</strong> {props.list[key].item_desc}
-            <button
+        <li className="list-group-item" key={key}>
+          <strong>{props.list[key].item_name}</strong> {props.list[key].item_desc}
+          <button className="btn btn-info"
               type="button"
               key={key}
               onClick={props.onSubmitBorrow}
@@ -23,7 +23,6 @@ export default function ItemList(props) {
         ))
       }
     </ul>
-
     </div>
   )
 }
