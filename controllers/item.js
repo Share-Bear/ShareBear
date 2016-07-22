@@ -26,7 +26,7 @@ router.post('/new', addItem, (req,res) => {
     res.send(req.params.id)
 });
 
-//when a user edits an item
+// //when a user edits an item
 router.put('/:id', editItem, (req,res) => {
     res.send(req.params.id)
 });
@@ -36,12 +36,13 @@ router.delete('/:id', deleteItem, (req,res) => {
 });
 
 //when a user borrows an item
-router.put('/:id/borrow', itemBorrowed, (req,res) => {
+router.put('/:id/borrow', itemBorrowed, getAllItems, (req,res) => {
     res.send(req.params.id)
 });
 
 //when a user returns a borrowed item
 router.put('/:id/return', itemReturned, (req,res) => {
+    console.log('RETURNEDD!!!!')
     res.send(req.params.id)
 });
 
