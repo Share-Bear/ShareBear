@@ -10,6 +10,7 @@ import UserBorrowedList from './Borrowedlist.jsx'
 import PostNew          from './PostNew.jsx'
 import Footer           from './Footer.jsx'
 import Topbar           from './Topbar.jsx'
+// import { Grid, Row, Col } from 'react-bootstrap';
 // import JumboTron          from './Jumbotron.jsx'
 
 // create a React Component called _App_
@@ -125,10 +126,11 @@ export default class App extends React.Component{
 <Topbar />
   <div className="jumbotron">
     <h1>Welcome to ShareBear!</h1>
+    <ZipCode zip={this.updateZip.bind(this)} />
   </div>
   <div className="outer">
     <div className="left">
-      <ZipCode zip={this.updateZip.bind(this)} />
+
       <PostNew />
       <ItemList list={this.state.localItems} onSubmitBorrow= {this.onSubmitBorrow.bind(this)}/>
     </div>
@@ -136,9 +138,8 @@ export default class App extends React.Component{
       <UserOwnedList list={this.state.ownedItems} onSubmitDelete= {this.onSubmitDelete.bind(this)} edit={this.handleEditButton.bind(this)} />
       <UserBorrowedList list={this.state.borrowedItems} onSubmitReturn= {this.onSubmitReturn.bind(this)} />
     </div>
-  <Footer />
-  </div>
-
+<Footer />
+</div>
 </container>
     )
   }

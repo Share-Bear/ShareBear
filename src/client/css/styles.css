@@ -23,6 +23,7 @@ h1 {
 .topbar {
   height:50px;
   background-color: #46433A;
+  text-align: right;
 
 }
 
@@ -43,12 +44,24 @@ h1 {
 */
 }
 
+.jumbotron {
 
-.heading_button:before {
-    /* symbol for "opening" panels */
-    font-family: 'Glyphicons Halflings';  /* essential for enabling glyphicon */
-    content: "\e114";    /* adjust as needed, taken from bootstrap.css */
-    float: right;        /* adjust as needed */
-    color: #999999;         /* adjust as needed */
-    margin-top: 10px;
+  background-color: #CE534D;
+  /*width: 100%;*/
+  text-align: center;
 }
+.formHorizontal * {
+    width:500px;
+    /*width:100px;*/
+      margin: 0px auto;
+    text-align: center;
+
+}
+.form-group {
+  text-align: center;
+
+
+}
+
+
+
