@@ -7,6 +7,7 @@ import ItemList         from './ItemList.jsx'
 import ZipCode          from './ZipCode.jsx'
 import UserOwnedList    from './Ownedlist.jsx'
 import UserBorrowedList    from './Borrowedlist.jsx'
+import PostNew          from './PostNew.jsx'
 import Footer    from './Footer.jsx'
 // import JumboTron          from './Jumbotron.jsx'
 
@@ -114,6 +115,7 @@ export default class App extends React.Component{
   </div>
   <div className="outer">
     <ZipCode zip={this.updateZip.bind(this)} />
+    <PostNew />
     <ItemList list={this.state.localItems} onSubmitBorrow= {this.onSubmitBorrow.bind(this)}/>
     <UserOwnedList list={this.state.ownedItems} onSubmitDelete= {this.onSubmitDelete.bind(this)} />
     <UserBorrowedList list={this.state.borrowedItems} onSubmitReturn= {this.onSubmitReturn.bind(this)} />
