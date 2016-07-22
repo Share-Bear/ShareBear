@@ -109,15 +109,6 @@ export default class App extends React.Component{
     })
   }
 
-  handleEditButton(event){
-    event.preventDefault();
-    this.setState({ownedItems: {}})
-    ajax.getOwnedItems(this.state.user).then(data=>{
-      console.log('yooooo')
-      this.setState({ownedItems: data.indexByKey('item_id')})
-    })
-  }
-
   render(){
     return (
 <container className="">
@@ -128,7 +119,7 @@ export default class App extends React.Component{
     <ZipCode zip={this.updateZip.bind(this)} />
     <PostNew />
     <ItemList list={this.state.localItems} onSubmitBorrow= {this.onSubmitBorrow.bind(this)}/>
-    <UserOwnedList list={this.state.ownedItems} onSubmitDelete= {this.onSubmitDelete.bind(this)} edit={this.handleEditButton.bind(this)} />
+    <UserOwnedList list={this.state.ownedItems} onSubmitDelete= {this.onSubmitDelete.bind(this)} />
     <UserBorrowedList list={this.state.borrowedItems} onSubmitReturn= {this.onSubmitReturn.bind(this)} />
   </div>
   <Footer />
