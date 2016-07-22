@@ -6,7 +6,6 @@ const ajaxAdapter ={
       .then( r => r.json())
   },
   getItemsByZip(item){
-    console.log("ajax get items works")
     return fetch(`/items/zip/${item}`)
       .then(r => r.json())
   },
@@ -36,7 +35,6 @@ const ajaxAdapter ={
     }).then( r=> r.json() )
   },
   returnItem(item){
-    console.log('ajax return item')
     return fetch(`/items/${item}/return`,{
       method: 'PUT',
       headers: {
@@ -45,6 +43,21 @@ const ajaxAdapter ={
     }).then( r=> {
       console.log(r)
       r.json()
+    })
+  },
+
+  updateItem(item, name, desc){
+    return fetch(`/items/${item}`, {
+      method: 'PUT',
+      headers: {
+        "Content-type": "application/json; charset=UTF-8"
+      },
+      body : JSON.stringify({
+        item_name: name,
+        item_desc: desc})
+      }).then( r=> {
+        console.log(r)
+        r.json()
     })
   }
 

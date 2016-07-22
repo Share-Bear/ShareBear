@@ -8,7 +8,8 @@ DROP TABLE IF EXISTS items;
 CREATE TABLE users (
   user_id SERIAL PRIMARY KEY NOT NULL,
   user_name VARCHAR NOT NULL,
-  email VARCHAR NOT NULL,
+  email VARCHAR unique NOT NULL,
+  password_digest TEXT NOT NULL,
   address VARCHAR NOT NULL,
   zipcode INT NOT NULL
 );

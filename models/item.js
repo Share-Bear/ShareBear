@@ -76,7 +76,7 @@ function itemReturned(req,res,next) {
     })
 }
 function editItem(req,res,next) {
-  db.any(`UPDATE items(item_name, owner_id, item_desc) VALUES($1, $2, $3);`, [req.body.item_name, req.params.id, req.body.item_desc])
+  db.any(`UPDATE items set item_name=$1, item_desc=$2 where item_id=$3;`, [req.body.item_name, req.body.item_desc, req.params.id])
     .then(data => {
       res.rows = data;
       next();
