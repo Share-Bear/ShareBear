@@ -29,7 +29,6 @@ export default class App extends React.Component{
 
   componentDidMount(){
     const here = this;
-    console.log('mounte')
     ajax.getBorrowedItems(this.state.user).then(data=>{
       this.setState({borrowedItems: data.indexByKey('item_id')})
     })
@@ -67,11 +66,12 @@ export default class App extends React.Component{
 
 
   addItems(newItem){
-    ajax.addItem(newItem)
-      .then(data=>{
-        this.state.localItems[ data.item_id ] = data
-        this.setState({localItems: this.state.localItems})
-      })
+    console.log('this is the object generated in App.jsx', newItem)
+    ajax.addNewItem(newItem)
+      //  .then(data=>{
+      //   this.state.ownedItems[ data.item_id ] = data
+      //   this.setState({ownedItems: this.state.ownedItems})
+      // })
   }
 
   onSubmitBorrow(event){
@@ -108,15 +108,6 @@ export default class App extends React.Component{
       delete this.state.borrowedItems[ item ] ;
       this.setState({localItems: this.state.localItems})
       this.setState({BorrowedItems: this.state.BorrowedItems})
-    })
-  }
-
-  handleEditButton(event){
-    event.preventDefault();
-    this.setState({ownedItems: {}})
-    ajax.getOwnedItems(this.state.user).then(data=>{
-      console.log('yooooo')
-      this.setState({ownedItems: data.indexByKey('item_id')})
     })
   }
 

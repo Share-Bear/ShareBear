@@ -29,7 +29,11 @@ function getItem(req,res,next) {
 }
 
 function addItem(req,res,next) {
-  db.any(`INSERT INTO items(item_name, owner_id, item_desc) VALUES($1, $2, $3);`, [req.body.item_name, req.body.user_id, req.body.item_desc])
+  db.any(
+      console.log("this happened!!!!")
+      `INSERT INTO items(item_name, owner_id, item_desc)
+      VALUES($1, $2, $3);`,
+      [req.body.item_name, req.body.owner_id, req.body.item_desc])
     .then(data => {
       res.rows = data;
       next();
@@ -40,7 +44,6 @@ function addItem(req,res,next) {
 }
 
 function itemsByZip(req,res,next) {
-  console.log('items by zip model works')
   db.any(`SELECT item_id, item_name, item_desc, owner_id, borrower_id, zipcode, checked_out from items inner join users on items.owner_id=users.user_id where zipcode=$1;`, [req.params.id])
     .then(data => {
       res.rows = data;
@@ -54,7 +57,6 @@ function itemsByZip(req,res,next) {
 function itemBorrowed(req,res,next) {
   db.any(`UPDATE items set borrower_id=$1, checked_out=true where item_id=$2;`, [req.body.user, req.params.id])
     .then(data => {
-      console.log(req.body)
       res.rows = data;
       next();
     })
@@ -64,7 +66,6 @@ function itemBorrowed(req,res,next) {
 }
 //when a user returns an item
 function itemReturned(req,res,next) {
-  console.log('hello')
   db.any(`UPDATE items set borrower_id=NULL, checked_out=false where item_id=$1;`, [req.params.id])
     .then(data => {
       console.log('RETURNEDD!!!!')

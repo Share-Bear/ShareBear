@@ -9,7 +9,7 @@ CREATE TABLE users (
   user_id SERIAL PRIMARY KEY NOT NULL,
   user_name VARCHAR NOT NULL,
   email VARCHAR unique NOT NULL,
-  password_digest TEXT NOT NULL,
+  password_digest TEXT,
   address VARCHAR NOT NULL,
   zipcode INT NOT NULL
 );
