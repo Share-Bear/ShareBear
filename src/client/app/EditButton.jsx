@@ -1,5 +1,9 @@
 import React            from 'react';
 import ajax             from '../helpers/ajaxAdapter.js'
+import { Button } from 'react-bootstrap';
+import { Modal } from 'react-bootstrap';
+
+
 export default class Edit extends React.Component{
   constructor(){
     super();
@@ -7,8 +11,16 @@ export default class Edit extends React.Component{
     this.state = {
       name: '',
       desc: '',
-      id: ''
+      id: '',
+      showModal: false
     }
+  }
+  close() {
+    this.setState({ showModal: false });
+  }
+
+  open() {
+    this.setState({ showModal: true });
   }
   componentDidMount(){
     var here=this
@@ -36,20 +48,32 @@ export default class Edit extends React.Component{
       .then(data=>{
         console.log('changed')
       })
-    this.props.handleEdit()
+    console.log(this.props.handleEdit())
   }
 
   render(){
     return(
       <div>
+        <Button
+          bsStyle="primary"
+          bsSize="large"
+          onClick={this.open.bind(this)}
+        >
+          Edit your item
+        </Button>
+        <Modal show={this.state.showModal} onHide={this.close.bind(this)}>
+        <Modal.Header closeButton>
+        <Modal.Title> Edit item </Modal.Title>
+          </Modal.Header>
         <form  onSubmit={this.handleEditTwo.bind(this)}>
 
           <input type="text" placeholder={this.props.items.item_name} onChange={this.handleChange.bind(this)} value={this.state.name}/>
 
           <input type="text" placeholder={this.props.items.item_desc} onChange={this.handleChangeTwo.bind(this)} value={this.state.desc}/>
 
-          <button type='submit'>EDIT ITEM</button>
+        <Button onClick={this.close.bind(this)}>Edit Item</Button>
         </form>
+        </Modal>
       </div>
     )
   }

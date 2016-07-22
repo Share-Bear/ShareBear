@@ -111,11 +111,13 @@ export default class App extends React.Component{
 
   handleEditButton(event){
     event.preventDefault();
+
     this.setState({ownedItems: {}})
     ajax.getOwnedItems(this.state.user).then(data=>{
       console.log('yooooo')
       this.setState({ownedItems: data.indexByKey('item_id')})
     })
+    return('yoo')
   }
 
   render(){
