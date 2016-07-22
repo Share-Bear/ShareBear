@@ -1,6 +1,7 @@
 'use strict'
 import React            from 'react';
 import Edit             from './EditButton.jsx'
+
 export default class UserOwnedList extends React.Component{
   render(){
     return(
