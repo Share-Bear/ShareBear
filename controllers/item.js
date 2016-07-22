@@ -23,7 +23,7 @@ router.get('/zip/:id', itemsByZip, (req,res) => {
 
 //add a new item
 router.post('/new', addItem, (req,res) => {
-    res.send(req.params.id)
+    res.send(res.rows)
 });
 
 // //when a user edits an item
