@@ -10,9 +10,9 @@ export default function ItemList(props) {
     <ul>
       {Object.keys(props.list)
         .map(key=>(
-          <li>
+          <li className="list-group-item">
             <strong>{props.list[key].item_name}</strong> {props.list[key].item_desc}
-            <button
+            <button className="btn btn-info"
               type="button"
               key={key}>
               borrow this!

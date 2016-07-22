@@ -11,8 +11,8 @@ export default function UserOwnedList(props) {
             <li
               key={key}>
               <strong>{props.list[key].item_name}</strong> {props.list[key].item_desc}
-               <button type="submit" onClick={props.onSubmitDelete} value={props.list[key].item_id}>
-              Delete</button> <button type="submit">
+               <button className="btn btn-warning"type="submit" onClick={props.onSubmitDelete} value={props.list[key].item_id}>
+              Delete</button> <button className="btn btn-secondary" type="submit">
               Edit</button>
             </li>
           ))

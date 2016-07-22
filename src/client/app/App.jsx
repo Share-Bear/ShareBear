@@ -7,6 +7,8 @@ import ItemList         from './ItemList.jsx'
 import ZipCode          from './ZipCode.jsx'
 import UserOwnedList    from './Ownedlist.jsx'
 import UserBorrowedList    from './Borrowedlist.jsx'
+import Footer    from './Footer.jsx'
+// import JumboTron          from './Jumbotron.jsx'
 
 // create a React Component called _App_
 export default class App extends React.Component{
@@ -67,20 +69,23 @@ export default class App extends React.Component{
   render(){
     return (
 
-      <container>
-      <div className="container-fluid">
-        <h1> Welcome to ShareBear!</h1>
-        <ZipCode zip={this.updateZip.bind(this)} />
-        <section className="listedItems">
-        <ItemList list={this.state.localItems}/>
-        </section>
-        <UserOwnedList list={this.state.ownedItems} onSubmitDelete= {this.onSubmitDelete.bind(this)} />
-        <UserBorrowedList list={this.state.borrowedItems} />
-        </div>
+<container className="">
 
+<div className="jumbotron">
+  <h1>Welcome to ShareBear!</h1>
+</div>
+<div className="outer">
 
+  <ZipCode zip={this.updateZip.bind(this)} />
+  <ItemList list={this.state.localItems}/>
 
-      </container>
+  <UserOwnedList list={this.state.ownedItems} onSubmitDelete= {this.onSubmitDelete.bind(this)} />
+  <UserBorrowedList list={this.state.borrowedItems} />
+
+</div>
+
+<Footer />
+</container>
     )
   }
 }
