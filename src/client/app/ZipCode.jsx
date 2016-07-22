@@ -30,7 +30,7 @@
       <div>
         <form action="" onSubmit={this.props.zip}>
           <input type="text" placeholder="ZIP CODE" name="zip_name"/>
-          <button type="submit"> Search </button>
+          <button className ="btn btn-primary" type="submit"> Search </button>
         </form>
       </div>
     )

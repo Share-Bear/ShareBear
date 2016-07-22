@@ -1,7 +1,6 @@
 // import the libs we need
 import React            from 'react'
 import ReactDOM         from 'react-dom'
-
 import ajax             from '../helpers/ajaxAdapter.js'
 import util             from '../helpers/util.js'
 import ItemList         from './ItemList.jsx'
@@ -67,14 +66,20 @@ export default class App extends React.Component{
 
   render(){
     return (
-      <container className="container-fluid">
-        <h1> Welcome to ShareBear! </h1>
+
+      <container>
+      <div className="container-fluid">
+        <h1> Welcome to ShareBear!</h1>
         <ZipCode zip={this.updateZip.bind(this)} />
         <section className="listedItems">
         <ItemList list={this.state.localItems}/>
         </section>
         <UserOwnedList list={this.state.ownedItems} onSubmitDelete= {this.onSubmitDelete.bind(this)} />
         <UserBorrowedList list={this.state.borrowedItems} />
+        </div>
+
+
+
       </container>
     )
   }
