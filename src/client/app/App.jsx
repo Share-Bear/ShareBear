@@ -22,12 +22,13 @@ export default class App extends React.Component{
       borrowedItems:{}
     }
   }
+
   componentDidMount(){
     const here = this;
     ajax.getItems().then( data=>{
       function forRightUser(item) {
         console.log('hello')
-        return item.owner_id === here.state.user
+        return item.owner_id !== here.state.user
       }
       var filtered = data.filter(forRightUser);
       this.setState({localItems: filtered.indexByKey('item_id')})
@@ -40,6 +41,7 @@ export default class App extends React.Component{
     })
   }
   updateZip(event){
+    const here = this;
     event.preventDefault();
     let zipNew = event.target.firstChild.value;
     this.setState({zip: zipNew})
@@ -48,7 +50,11 @@ export default class App extends React.Component{
     let myItems = this.state.localItems;
     ajax.getItemsByZip(myZip)
       .then( data=>{
-        this.setState({localItems: data.indexByKey('item_id')})
+        function forRightUser(item) {
+          return item.owner_id !== here.state.user
+        }
+        var filtered = data.filter(forRightUser);
+        this.setState({localItems: filtered.indexByKey('item_id')})
         console.log(this.state.localItems)
       })
   }
