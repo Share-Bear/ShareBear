@@ -6,11 +6,49 @@
 }
 */
 
+@import url(https://fonts.googleapis.com/css?family=Quicksand);
+
 
 
 h1 {
-    padding:20px; }
+    font-family: 'Quicksand', sans-serif;
+    padding:20px;
+    font-weight: 700;
+  }
 
 .outer * {
   margin: 7px;
+}
+
+.topbar {
+  height:50px;
+  background-color: #46433A;
+
+}
+
+
+.left {
+
+  width:50%;
+  height: auto;
+  float: left;
+
+}
+
+.right {
+
+/*  width:50%;
+  height: auto;
+  float: right;
+*/
+}
+
+
+.heading_button:before {
+    /* symbol for "opening" panels */
+    font-family: 'Glyphicons Halflings';  /* essential for enabling glyphicon */
+    content: "\e114";    /* adjust as needed, taken from bootstrap.css */
+    float: right;        /* adjust as needed */
+    color: #999999;         /* adjust as needed */
+    margin-top: 10px;
 }
