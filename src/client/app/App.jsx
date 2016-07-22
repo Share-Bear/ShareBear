@@ -25,27 +25,30 @@ export default class App extends React.Component{
 
   componentDidMount(){
     const here = this;
+    ajax.getBorrowedItems(this.state.user).then(data=>{
+      this.setState({borrowedItems: data.indexByKey('item_id')})
+    })
     ajax.getItems().then( data=>{
       function forRightUser(item) {
         console.log('hello')
         return item.owner_id !== here.state.user
       }
-      var filtered = data.filter(forRightUser);
+      function notBorrowed(item){
+        return !item.borrower_id
+      }
+      var filtered = data.filter(forRightUser).filter(notBorrowed);
       this.setState({localItems: filtered.indexByKey('item_id')})
     })
     ajax.getOwnedItems(this.state.user).then(data=>{
       this.setState({ownedItems: data.indexByKey('item_id')})
     })
-    ajax.getBorrowedItems(this.state.user).then(data=>{
-      this.setState({borrowedItems: data.indexByKey('item_id')})
-    })
   }
+
   updateZip(event){
     const here = this;
     event.preventDefault();
     let zipNew = event.target.firstChild.value;
     this.setState({zip: zipNew})
-
     let myZip = this.state.zip;
     let myItems = this.state.localItems;
     ajax.getItemsByZip(myZip)
@@ -58,6 +61,8 @@ export default class App extends React.Component{
         console.log(this.state.localItems)
       })
   }
+
+
   addItems(newItem){
     ajax.addItem(newItem)
       .then(data=>{
@@ -65,6 +70,7 @@ export default class App extends React.Component{
         this.setState({localItems: this.state.localItems})
       })
   }
+
   onSubmitBorrow(event){
     event.preventDefault();
     var item=event.target.value
@@ -78,6 +84,7 @@ export default class App extends React.Component{
       this.setState({borrowedItems: this.state.borrowedItems})
     })
   }
+
   onSubmitDelete(event){
     event.preventDefault();
     var item=event.target.value
@@ -89,6 +96,7 @@ export default class App extends React.Component{
     })
     console.log(this.state.ownedItems)
   }
+
   onSubmitReturn(event){
     event.preventDefault();
     var item=event.target.value
@@ -101,18 +109,16 @@ export default class App extends React.Component{
       this.setState({localItems: this.state.localItems})
       this.setState({BorrowedItems: this.state.BorrowedItems})
     })
-
   }
+
   render(){
     return (
       <container>
         <h1> Welcome to ShareBear! </h1>
-
         <ZipCode zip={this.updateZip.bind(this)} />
         <ItemList list={this.state.localItems} onSubmitBorrow= {this.onSubmitBorrow.bind(this)}/>
         <UserOwnedList list={this.state.ownedItems} onSubmitDelete= {this.onSubmitDelete.bind(this)} />
         <UserBorrowedList list={this.state.borrowedItems} onSubmitReturn= {this.onSubmitReturn.bind(this)} />
-
       </container>
     )
   }
