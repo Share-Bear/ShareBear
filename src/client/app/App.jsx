@@ -26,12 +26,12 @@ export default class App extends React.Component{
 
   componentDidMount(){
     const here = this;
+    console.log('mounte')
     ajax.getBorrowedItems(this.state.user).then(data=>{
       this.setState({borrowedItems: data.indexByKey('item_id')})
     })
     ajax.getItems().then( data=>{
       function forRightUser(item) {
-        console.log('hello')
         return item.owner_id !== here.state.user
       }
       function notBorrowed(item){
@@ -59,7 +59,6 @@ export default class App extends React.Component{
         }
         var filtered = data.filter(forRightUser);
         this.setState({localItems: filtered.indexByKey('item_id')})
-        console.log(this.state.localItems)
       })
   }
 
@@ -75,7 +74,6 @@ export default class App extends React.Component{
   onSubmitBorrow(event){
     event.preventDefault();
     var item=event.target.value
-    console.log(item)
     ajax.borrowItem(item, this.state.user)
     .then(data=>{
       var moved = (this.state.localItems[ data ]);
@@ -89,13 +87,11 @@ export default class App extends React.Component{
   onSubmitDelete(event){
     event.preventDefault();
     var item=event.target.value
-    console.log(this.state.ownedItems[ item ])
     ajax.deleteItem(item)
     .then(data=>{
       delete this.state.ownedItems[ item ] ;
       this.setState({ownedItems: this.state.ownedItems})
     })
-    console.log(this.state.ownedItems)
   }
 
   onSubmitReturn(event){
@@ -112,6 +108,15 @@ export default class App extends React.Component{
     })
   }
 
+  handleEditButton(event){
+    event.preventDefault();
+    this.setState({ownedItems: {}})
+    ajax.getOwnedItems(this.state.user).then(data=>{
+      console.log('yooooo')
+      this.setState({ownedItems: data.indexByKey('item_id')})
+    })
+  }
+
   render(){
     return (
 <container className="">
@@ -121,7 +126,7 @@ export default class App extends React.Component{
   <div className="outer">
     <ZipCode zip={this.updateZip.bind(this)} />
     <ItemList list={this.state.localItems} onSubmitBorrow= {this.onSubmitBorrow.bind(this)}/>
-    <UserOwnedList list={this.state.ownedItems} onSubmitDelete= {this.onSubmitDelete.bind(this)} />
+    <UserOwnedList list={this.state.ownedItems} onSubmitDelete= {this.onSubmitDelete.bind(this)} edit={this.handleEditButton.bind(this)} />
     <UserBorrowedList list={this.state.borrowedItems} onSubmitReturn= {this.onSubmitReturn.bind(this)} />
   </div>
   <Footer />
