@@ -3,7 +3,18 @@
 //here we are calling pg promise to access the database
 //make sure the database is correct in psql
 const db = require('./connections.js')
+const bcrypt  = require('bcrypt');
+const salt    = bcrypt.genSaltSync(10);
 
+
+const createSecure = (password)=>
+  new Promise( (resolve,reject)=>
+    bcrypt.genSalt( (err, salt)=>
+      bcrypt.hash(password, salt, (err, hash)=>
+        err? reject(err) : resolve(hash)
+      )
+    )
+  )
 
 //get all users that are using share bear
 function getAllUsers(req,res,next) {
@@ -19,19 +30,33 @@ function getAllUsers(req,res,next) {
 
 //get a specific users
 function getUser(req,res,next) {
-  db.one(`SELECT * FROM users WHERE user_id=$1`, [req.params.id])
-    .then(data => {
-      res.rows = data;
-      next();
-    })
-    .catch( error=> {
-      console.log('Error ', error)
-    })
-}
+  _db.one(`
+      SELECT *
+      FROM users
+      WHERE email = lower(trim(from $/email/));
+      `, req.body)
+      .then( user=>{
+
+        if(bcrypt.compareSync(req.body.password, user.password_digest)){
+          res.user = user;
+        }else{
+          res.error = true
+        }
+        console.log(res.user)
+        next()
+
+      })
+      /* NOTE: NO USERS or all ERRORS*/
+      .catch( error=>{
+        console.error('Error ', error);
+        res.error = error
+        next()
+      })
+  }
 
 //add a new user
 function addUser(req,res,next) {
-  db.any(`INSERT INTO users (user_name, email, address, zipcode) VALUES($1, $2, $3, $4);`, [req.body.user_name, req.body.email, req.body.address, req.body.zipcode])
+  db.any(`INSERT INTO users (user_name, email, address, zipcode, password_digest) VALUES($1, $2, $3, $4);`, [req.body.user_name, req.body.email, req.body.address, req.body.zipcode, hash])
     .then(data => {
       res.rows = data;
       next();
