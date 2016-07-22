@@ -14,8 +14,7 @@ export default class UserOwnedList extends React.Component{
                 key={key}>
                 <strong>{this.props.list[key].item_name}</strong> {this.props.list[key].item_desc}
                  <button type="submit" onClick={this.props.onSubmitDelete} value={this.props.list[key].item_id}>
-                Delete</button> <button type="submit">
-                Edit</button>
+                Delete</button>
                 <Edit items={this.props.list[key]} handleEdit={this.props.edit} />
               </li>
             ))
