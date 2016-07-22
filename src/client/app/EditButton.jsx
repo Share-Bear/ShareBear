@@ -35,20 +35,21 @@ export default class Edit extends React.Component{
     this.setState({
       name: event.target.value
     })
+    this.props.items.item_name = event.target.value
   }
   handleChangeTwo(event){
     this.setState({
       desc: event.target.value
     })
+    this.props.items.item_desc = event.target.value
   }
   handleEditTwo(event){
-    var here= this
     event.preventDefault()
+    var here= this
     ajax.updateItem(here.state.id, here.state.name, here.state.desc)
       .then(data=>{
         console.log('changed')
       })
-    console.log(this.props.handleEdit())
   }
 
   render(){
@@ -65,14 +66,13 @@ export default class Edit extends React.Component{
         <Modal.Header closeButton>
         <Modal.Title> Edit item </Modal.Title>
           </Modal.Header>
-        <form  onSubmit={this.handleEditTwo.bind(this)}>
-
+        <form  onSubmit={this.handleEditTwo.bind(this)} >
           <input type="text" placeholder={this.props.items.item_name} onChange={this.handleChange.bind(this)} value={this.state.name}/>
 
           <input type="text" placeholder={this.props.items.item_desc} onChange={this.handleChangeTwo.bind(this)} value={this.state.desc}/>
 
-        <Button onClick={this.close.bind(this)}>Edit Item</Button>
-        </form>
+          <Button type='submit' onClick={this.close.bind(this)}>Edit Item</Button>
+      </form>
         </Modal>
       </div>
     )
