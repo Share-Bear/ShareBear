@@ -1,13 +1,14 @@
 // import the libs we need
 import React            from 'react'
 import ReactDOM         from 'react-dom'
-
 import ajax             from '../helpers/ajaxAdapter.js'
 import util             from '../helpers/util.js'
 import ItemList         from './ItemList.jsx'
 import ZipCode          from './ZipCode.jsx'
 import UserOwnedList    from './Ownedlist.jsx'
 import UserBorrowedList    from './Borrowedlist.jsx'
+import Footer    from './Footer.jsx'
+// import JumboTron          from './Jumbotron.jsx'
 
 // create a React Component called _App_
 export default class App extends React.Component{
@@ -113,13 +114,18 @@ export default class App extends React.Component{
 
   render(){
     return (
-      <container>
-        <h1> Welcome to ShareBear! </h1>
-        <ZipCode zip={this.updateZip.bind(this)} />
-        <ItemList list={this.state.localItems} onSubmitBorrow= {this.onSubmitBorrow.bind(this)}/>
-        <UserOwnedList list={this.state.ownedItems} onSubmitDelete= {this.onSubmitDelete.bind(this)} />
-        <UserBorrowedList list={this.state.borrowedItems} onSubmitReturn= {this.onSubmitReturn.bind(this)} />
-      </container>
+<container className="">
+  <div className="jumbotron">
+    <h1>Welcome to ShareBear!</h1>
+  </div>
+  <div className="outer">
+    <ZipCode zip={this.updateZip.bind(this)} />
+    <ItemList list={this.state.localItems} onSubmitBorrow= {this.onSubmitBorrow.bind(this)}/>
+    <UserOwnedList list={this.state.ownedItems} onSubmitDelete= {this.onSubmitDelete.bind(this)} />
+    <UserBorrowedList list={this.state.borrowedItems} onSubmitReturn= {this.onSubmitReturn.bind(this)} />
+  </div>
+  <Footer />
+</container>
     )
   }
 }

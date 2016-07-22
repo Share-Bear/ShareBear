@@ -16,7 +16,7 @@ export default class UserOwnedList extends React.Component{
                  <button type="submit" onClick={this.props.onSubmitDelete} value={this.props.list[key].item_id}>
                 Delete</button> <button type="submit">
                 Edit</button>
-                <Edit />
+                <Edit items={this.props.list[key]} />
               </li>
             ))
           }
@@ -25,3 +25,4 @@ export default class UserOwnedList extends React.Component{
     )
   }
 }
+
