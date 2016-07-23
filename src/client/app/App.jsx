@@ -122,7 +122,7 @@ export default class App extends React.Component{
         </div>
         <div className="outer">
           <div className="left">
-            <PostNew />
+            <PostNew addItem={this.addItems.bind(this)} />
             <ItemList list={this.state.localItems} onSubmitBorrow= {this.onSubmitBorrow.bind(this)}/>
           </div>
           <div className="right">
