@@ -30,11 +30,12 @@ function getItem(req,res,next) {
 
 function addItem(req,res,next) {
   db.any(
-      console.log("this happened!!!!")
       `INSERT INTO items(item_name, owner_id, item_desc)
-      VALUES($1, $2, $3);`,
+      VALUES($1, $2, $3)
+      returning *;`,
       [req.body.item_name, req.body.owner_id, req.body.item_desc])
     .then(data => {
+      console.log("this happened!!!!")
       res.rows = data;
       next();
     })

@@ -113,28 +113,35 @@ export default class App extends React.Component{
 
   render(){
     return (
-<container className="">
-<Topbar />
-  <div className="jumbotron">
-    <h1>Welcome to ShareBear!</h1>
-    <ZipCode zip={this.updateZip.bind(this)} />
-  </div>
-  <div className="outer">
-    <div className="left">
-
-      <PostNew />
-      <ItemList list={this.state.localItems} onSubmitBorrow= {this.onSubmitBorrow.bind(this)}/>
-    </div>
-    <div className="right">
-      <UserOwnedList list={this.state.ownedItems} onSubmitDelete= {this.onSubmitDelete.bind(this)} edit={this.handleEditButton.bind(this)} />
-      <UserBorrowedList list={this.state.borrowedItems} onSubmitReturn= {this.onSubmitReturn.bind(this)} />
-    </div>
-<Footer />
-</div>
-</container>
+      <container className="">
+      <Topbar />
+      <div className="bigBody">
+        <div className="jumbotron">
+          <h1>Welcome to ShareBear!</h1>
+          <ZipCode zip={this.updateZip.bind(this)} />
+        </div>
+        <div className="outer">
+          <div className="left">
+            <PostNew />
+            <ItemList list={this.state.localItems} onSubmitBorrow= {this.onSubmitBorrow.bind(this)}/>
+          </div>
+          <div className="right">
+            <div className="ownedContainer">
+              <UserOwnedList list={this.state.ownedItems} onSubmitDelete= {this.onSubmitDelete.bind(this)}  />
+            </div>
+            <div className="borrowedContainer">
+              <UserBorrowedList list={this.state.borrowedItems} onSubmitReturn= {this.onSubmitReturn.bind(this)} />
+            </div>
+          </div>
+        </div>
+      </div>
+      <Footer />
+      </container>
     )
   }
 }
+
+// edit={this.handleEditButton.bind(this)}
 
 // mount our App at #container
 ReactDOM.render(<App />, document.querySelector('#container'))
