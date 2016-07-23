@@ -1,27 +1,28 @@
 'use strict'
-import React            from 'react';
-
+import React              from 'react';
+import {Accordion, Panel} from 'react-bootstrap';
 export default function ItemList(props) {
 
   return(
-    <div className="list-group">
+    <div>
       <h2> Available Items Near You </h2>
-      <ul>
-        {Object.keys(props.list)
-        .map(key=>(
-        <li className="list-group-item" key={key}>
-          <strong>{props.list[key].item_name}</strong> {props.list[key].item_desc}
-          <button className="btn btn-info"
-              type="button"
-              key={key}
-              onClick={props.onSubmitBorrow}
-              value={props.list[key].item_id}>
-              borrow this!
-            </button>
-          </li>
-        ))
+      {Object.keys(props.list)
+          .map(key=>(
+          <Accordion className="itemListAc">
+            <Panel header={props.list[key].item_name} key={key}>
+              {props.list[key].item_desc}
+              <button className="borrow btn btn-info"
+                    type="button"
+                    key={key}
+                    onClick={props.onSubmitBorrow}
+                    value={props.list[key].item_id}>
+                    borrow this!
+              </button>
+            </Panel>
+          </Accordion>
+          ))
       }
-    </ul>
+
     </div>
   )
 }

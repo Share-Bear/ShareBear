@@ -10,6 +10,7 @@ import UserBorrowedList from './Borrowedlist.jsx'
 import PostNew          from './PostNew.jsx'
 import Footer           from './Footer.jsx'
 import Topbar           from './Topbar.jsx'
+import {Grid, Row, Col } from 'react-bootstrap';
 // import { Grid, Row, Col } from 'react-bootstrap';
 // import JumboTron          from './Jumbotron.jsx'
 
@@ -133,9 +134,10 @@ export default class App extends React.Component{
               <UserBorrowedList list={this.state.borrowedItems} onSubmitReturn= {this.onSubmitReturn.bind(this)} />
             </div>
           </div>
+         <Footer />
         </div>
       </div>
-      <Footer />
+
       </container>
     )
   }
