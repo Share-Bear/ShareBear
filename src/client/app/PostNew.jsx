@@ -28,7 +28,7 @@ export default class PostNew extends React.Component{
     const newItem= {
       name: event.target.elements.item_name.value,
       desc: event.target.elements.item_desc.value,
-      owner: event.target.elements.owner_id.value
+      owner: this.props.currentUser
     }
     console.log('this is the object generated in PostNew.jsx', newItem)
     this.props.addItem(newItem);
@@ -43,7 +43,6 @@ export default class PostNew extends React.Component{
         >
           Post a New Item!
         </Button>
-
         <Modal show={this.state.showModal} onHide={this.close.bind(this)}>
           <Modal.Header closeButton>
             <Modal.Title> Post an item you'd like to loan!</Modal.Title>
@@ -51,7 +50,6 @@ export default class PostNew extends React.Component{
           <form onSubmit = {this.handleSubmit.bind(this)}>
             <input type="text" className="form-control input-lg" name="item_name" placeholder="Name of Item" />
             <input type="text" className="form-control input-lg" name="item_desc" placeholder="Desc of Item" />
-            <input type="text" className="form-control input-lg" name="owner_id" placeholder="User ID" />
             <Button type="submit" onClick={this.close.bind(this)}>Submit</Button>
           </form>
         </Modal>
