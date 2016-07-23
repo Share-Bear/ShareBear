@@ -119,10 +119,10 @@ export default class App extends React.Component{
         <div className="jumbotron">
           <h1>Welcome to ShareBear!</h1>
           <ZipCode zip={this.updateZip.bind(this)} />
+          <PostNew addItem={this.addItems.bind(this)} currentUser={this.state.user} />
         </div>
         <div className="outer">
           <div className="left">
-            <PostNew addItem={this.addItems.bind(this)} />
             <ItemList list={this.state.localItems} onSubmitBorrow= {this.onSubmitBorrow.bind(this)}/>
           </div>
           <div className="right">
