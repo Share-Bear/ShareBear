@@ -19,7 +19,6 @@ export default class ItemList extends React.Component{
   }
   render(){
     return (
-      <div>
       <Panel collapsible
         expanded={this.state.open}
         header={
@@ -30,7 +29,6 @@ export default class ItemList extends React.Component{
       >
       {this.props.item_desc}
       </Panel>
-      </div>
     )
   }
 
