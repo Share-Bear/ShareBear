@@ -140,14 +140,13 @@ export default class App extends React.Component{
         <div>
         <SignUp
         addItem={this.addUser.bind(this)} />
-        <LoginForm handleLogin={this.handleLogin.bind(this)} />
         </div>
       )
     }
 
     return (
       <container className="">
-      <Topbar />
+      <Topbar handleLogin={this.handleLogin.bind(this)}/>
       <div className="bigBody">
         <div className="jumbotron">
           <h1>Welcome to ShareBear</h1>
@@ -158,17 +157,19 @@ export default class App extends React.Component{
         </div>
         <div className="outer">
           <div className="item-list">
-          <h1> Things Near You </h1>
-            {Object.keys(this.state.localItems)
-              .map(key=>(
-                <ItemList
-                  key={key}
-                  item_name={this.state.localItems[key].item_name}
-                  item_desc={this.state.localItems[key].item_desc}
-                  onSubmitBorrow= {this.onSubmitBorrow.bind(this)}
-                />
-              ))
-            }
+            <h1> Things Near You </h1>
+            <div className="available-items-container">
+              {Object.keys(this.state.localItems)
+                .map(key=>(
+                  <ItemList
+                    key={key}
+                    item_name={this.state.localItems[key].item_name}
+                    item_desc={this.state.localItems[key].item_desc}
+                    onSubmitBorrow= {this.onSubmitBorrow.bind(this)}
+                  />
+                ))
+              }
+            </div>
           </div>
           <div className="users-things">
             <div className="ownedContainer">

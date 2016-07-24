@@ -21,6 +21,7 @@ export default class ItemList extends React.Component{
     return (
       <Panel collapsible
         expanded={this.state.open}
+        className='item-panel'
         header={
           <Button onClick={this.handleClick.bind(this)}>
             {this.props.item_name}
