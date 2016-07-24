@@ -191,6 +191,7 @@ export default class App extends React.Component{
                   <ItemList
                     item={this.state.localItems[key]}
                     onSubmitBorrow= {this.onSubmitBorrow.bind(this)}
+                    currentUser={this.state.user}
                   />
                 ))
               }
