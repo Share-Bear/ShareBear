@@ -25,13 +25,14 @@ export default class PostNew extends React.Component{
   }
   handleSubmit(event) {
     event.preventDefault();
-    const newItem= {
-      name: event.target.elements.item_name.value,
-      desc: event.target.elements.item_desc.value,
-      owner: this.props.currentUser
+    const newUser= {
+      user_name: event.target.elements.user_name.value,
+      email: event.target.elements.email.value,
+      password_digest: event.target.elements.password_digest.value,
+      address: event.target.elements.address.value,
+      zipcode: event.target.elements.zipcode.value,
     }
-    console.log('this is the object generated in PostNew.jsx', newItem)
-    this.props.addItem(newItem);
+    this.props.addUser(newUser);
   }
   render(){
     return(
@@ -40,15 +41,18 @@ export default class PostNew extends React.Component{
           className="primary post-new-btn "
           onClick={this.open.bind(this)}
         >
-          Post a New Item!
+          Sign Up!
         </Button>
         <Modal show={this.state.showModal} onHide={this.close.bind(this)}>
           <Modal.Header closeButton>
-            <Modal.Title> Post an item you'd like to loan!</Modal.Title>
+            <Modal.Title> Sign up</Modal.Title>
           </Modal.Header>
           <form onSubmit = {this.handleSubmit.bind(this)}>
-            <input type="text" className="form-control input-lg" name="item_name" placeholder="Name of Item" />
-            <input type="text" className="form-control input-lg" name="item_desc" placeholder="Desc of Item" />
+            <input type="text" className="form-control input-lg" name="user_name" placeholder="User name" />
+            <input type="text" className="form-control input-lg" name="email" placeholder="email" />
+            <input type="password" className="form-control input-lg" name="password_digest" placeholder="password" />
+            <input type="text" className="form-control input-lg" name="address" placeholder="address" />
+            <input type="text" className="form-control input-lg" name="zipcode" placeholder="zipcode" />
             <Button type="submit" onClick={this.close.bind(this)}>Submit</Button>
           </form>
         </Modal>

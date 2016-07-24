@@ -10,6 +10,7 @@ import UserBorrowedList from './Borrowedlist.jsx'
 import PostNew          from './PostNew.jsx'
 import Footer           from './Footer.jsx'
 import Topbar           from './Topbar.jsx'
+import SignUp           from './SignUp.jsx'
 import {Grid, Row, Col } from 'react-bootstrap';
 // import { Grid, Row, Col } from 'react-bootstrap';
 // import JumboTron          from './Jumbotron.jsx'
@@ -67,12 +68,14 @@ export default class App extends React.Component{
 
 
   addItems(newItem){
-    console.log('this is the object generated in App.jsx', newItem)
     ajax.addNewItem(newItem)
       //  .then(data=>{
       //   this.state.ownedItems[ data.item_id ] = data
       //   this.setState({ownedItems: this.state.ownedItems})
       // })
+  }
+  addUser(newUser){
+    ajax.addNewUser(newUser)
   }
 
   onSubmitBorrow(event){
@@ -111,22 +114,48 @@ export default class App extends React.Component{
       this.setState({BorrowedItems: this.state.BorrowedItems})
     })
   }
+  render (){
+    let userMessage;
+    if (this.state.user) {
+      userMessage = (
+        <PostNew
+        addItem={this.addItems.bind(this)}
+        currentUser={this.state.user} />
+      )
+    } else {
+      userMessage = (
+        <SignUp
+        addItem={this.addUser.bind(this)}/>
+      )
+    }
 
-  render(){
     return (
       <container className="">
       <Topbar />
       <div className="bigBody">
         <div className="jumbotron">
-          <h1>Welcome to ShareBear!</h1>
-          <ZipCode zip={this.updateZip.bind(this)} />
-          <PostNew addItem={this.addItems.bind(this)} currentUser={this.state.user} />
+          <h1>Welcome to ShareBear</h1>
+          <div className='post-container'>
+            <ZipCode zip={this.updateZip.bind(this)} />
+            {console.log(userMessage)}
+            {userMessage}
+          </div>
         </div>
         <div className="outer">
-          <div className="left">
-            <ItemList list={this.state.localItems} onSubmitBorrow= {this.onSubmitBorrow.bind(this)}/>
+          <div className="item-list">
+          <h1> Things Near You </h1>
+            {Object.keys(this.state.localItems)
+              .map(key=>(
+                <ItemList
+                  key={key}
+                  item_name={this.state.localItems[key].item_name}
+                  item_desc={this.state.localItems[key].item_desc}
+                  onSubmitBorrow= {this.onSubmitBorrow.bind(this)}
+                />
+              ))
+            }
           </div>
-          <div className="right">
+          <div className="users-things">
             <div className="ownedContainer">
               <UserOwnedList list={this.state.ownedItems} onSubmitDelete= {this.onSubmitDelete.bind(this)}  />
             </div>

@@ -46,8 +46,6 @@ const ajaxAdapter ={
     })
   },
   addNewItem(item){
-    console.log("AJAX LISTENED")
-    console.log('this is the object received by AJAX', item.name, item.desc, item.owner)
     return fetch(`/items/new`, {
       method: 'POST',
       headers: {
@@ -76,7 +74,25 @@ const ajaxAdapter ={
         console.log(r)
         r.json()
     })
-  }
+  },
+  addNewUser(user){
+    return fetch(`/users/new`, {
+      method: 'POST',
+      headers: {
+        "Content-type": "application/json; charset=UTF-8"
+      },
+      body : JSON.stringify({
+        user_name: user.user_name,
+        email: user.email,
+        password_digest: user.password_digest,
+        address: user.address,
+        zipcode: user.zipcode})
+      }).then( r=> {
+
+        console.log(r)
+        r.json()
+    })
+  },
 
 }
 export default ajaxAdapter;

@@ -51,30 +51,28 @@ export default class Edit extends React.Component{
         console.log('changed')
       })
   }
-
   render(){
     return(
-      <div>
+      <span className="edit-container">
         <Button
-          bsStyle="primary"
-          bsSize="large"
           onClick={this.open.bind(this)}
+          className="btn-xs btn-info edit-btn"
         >
-          Edit your item
+          Edit
         </Button>
         <Modal show={this.state.showModal} onHide={this.close.bind(this)}>
-        <Modal.Header closeButton>
-        <Modal.Title> Edit item </Modal.Title>
-          </Modal.Header>
-        <form  onSubmit={this.handleEditTwo.bind(this)} >
-          <input type="text" placeholder={this.props.items.item_name} onChange={this.handleChange.bind(this)} value={this.state.name}/>
+          <Modal.Header closeButton>
+          <Modal.Title> Edit item </Modal.Title>
+            </Modal.Header>
+          <form  onSubmit={this.handleEditTwo.bind(this)} >
+            <input type="text" placeholder={this.props.items.item_name} onChange={this.handleChange.bind(this)} value={this.state.name}/>
 
-          <input type="text" placeholder={this.props.items.item_desc} onChange={this.handleChangeTwo.bind(this)} value={this.state.desc}/>
+            <input type="text" placeholder={this.props.items.item_desc} onChange={this.handleChangeTwo.bind(this)} value={this.state.desc}/>
 
-          <Button type='submit' onClick={this.close.bind(this)}>Edit Item</Button>
-      </form>
+            <Button type='submit' className='btn-xs' onClick={this.close.bind(this)}>Edit Item</Button>
+          </form>
         </Modal>
-      </div>
+      </span>
     )
   }
 }

@@ -1,8 +1,13 @@
 /* Custom CSS to be delivered into the 'dist/' directory */
 @import url(https://fonts.googleapis.com/css?family=Quicksand);
 @import  url('https://fonts.googleapis.com/css?family=Oswald');
+
+
+/*li{
+  display: inline;
+}*/
 h1 {
-    font-family: 'Quicksand', sans-serif;
+    font-family: 'Oswald', sans-serif;
     padding:20px;
     font-weight: 900;
   }
@@ -14,7 +19,7 @@ h2 {
   }
 
 h3 {
-    font-family: 'Quicksand', sans-serif;
+    font-family: 'Oswald', sans-serif;
     padding:20px;
 
 
@@ -27,18 +32,47 @@ h3 {
   padding:25px;
 }
 
+.outer{
+  width: 80%;
+  margin: auto;
+}
 
-.outer, button  {
+button  {
+  font-size: 8px;
   margin: 8px;
-  padding:2px;
+  font-family: 'Oswald', sans-serif;
+
 }
 
 .jumbotron {
 
-  background-color: #CE534D;
+  background-color: #00B7FF;
   /*width: 100%;*/
   text-align: center;
+  box-shadow: -10px 4px 5px #888888;
 }
+
+.post-container {
+  width: 60%;
+  margin: 0px 20%;
+
+}
+
+.post-new-btn{
+  margin-top: 50px;
+  height: 60px;
+  width: 500px;
+  background-color: #0FE11D;
+  border: none;
+  font-size: 18px;
+  color: white;
+}
+
+.post-new-btn:hover{
+    background-color: #3DD102;
+    color: white;
+}
+
 .formHorizontal * {
     width:500px;
     /*width:100px;*/
@@ -46,6 +80,33 @@ h3 {
     text-align: center;
 
 }
+
+.item-list{
+  width: 60%;
+  margin: auto;
+  float: left;
+}
+
+.item-list button{
+  margin-top: 0px
+}
+
+.users-things{
+  width: 40%;
+  margin: auto;
+  float: left
+}
+
+.users-things button{
+  margin-top: 0px
+}
+
+.edit-container {
+  width: 50px;
+  margin-right: 0px;
+}
+
+
 
 .left {
   width:50%;
@@ -72,13 +133,15 @@ h3 {
 }
 
 
+.edit-btn{
 
+}
 
 .itemListAc .panel-default  .panel-heading {
     color: #000;
-    font-family: 'Quicksand';
-    font-weight: bold;
+    font-family: 'Oswald';
     background-color: #FFF;
+    margin: 0px;
 }
 
 .zip.btn.btn-primary {
