@@ -15,17 +15,18 @@ router.get('/', getAllUsers, (req,res) => {
 
 //add a new user
 router.post('/new', addUser, (req,res) => {
-    res.send(req.params.id)
+    console.log('your mom')
+    res.send(res.rows)
 });
 
 // router.use( tokenService.validateToken )
 
 // Show a single user
-router.get('/:id', getUser, tokenService.createToken, (req,res) => {
+router.get('/:id', getUser, (req,res) => {
   res.send(res.rows)
 });
 
-router.post('/authenticate', (req,res)=> {
+router.post('/authenticate/:id', getUser, tokenService.createToken, (req,res)=> {
   res.send(res.rows)
 })
 //show all from a users borrowed items

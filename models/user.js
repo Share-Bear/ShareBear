@@ -11,7 +11,7 @@ const createSecure = (password)=>
   new Promise( (resolve,reject)=>
     bcrypt.genSalt( (err, salt)=>
       bcrypt.hash(password, salt, (err, hash)=>
-        err? reject(err) : resolve(hash)
+        err ? reject(err) : resolve(hash)
       )
     )
   )
@@ -30,7 +30,7 @@ function getAllUsers(req,res,next) {
 
 //get a specific users
 function getUser(req,res,next) {
-  _db.one(`
+  db.one(`
       SELECT *
       FROM users
       WHERE email = lower(trim(from $/email/));
@@ -56,17 +56,23 @@ function getUser(req,res,next) {
 
 //add a new user
 function addUser(req,res,next) {
-  db.any(`INSERT INTO users (
-      user_name, email, address, zipcode, password_digest
-      ) VALUES($1, $2, $3, $4);`,
-      [req.body.user_name, req.body.email, req.body.address, req.body.zipcode, hash])
+  console.log('hello')
+  createSecure(req.body.password).then( hash=>{
+        console.log('going into db')
+        db.any(`INSERT INTO users (
+      user_name, email,  password_digest, address, zipcode
+      ) VALUES($1, $2, $3, $4, $5) returning *;`,
+      [req.body.user_name, req.body.email, hash, req.body.address, req.body.zipcode ])
     .then(data => {
+      console.log('coming out of db')
+      console.log(data)
       res.rows = data;
       next();
     })
     .catch( error=> {
       console.log('Error ', error)
     })
+  })
 }
 //delete a user
 function deleteUser(req,res,next) {

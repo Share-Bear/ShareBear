@@ -1,16 +1,17 @@
 // import the libs we need
-import React            from 'react'
-import ReactDOM         from 'react-dom'
-import ajax             from '../helpers/ajaxAdapter.js'
-import util             from '../helpers/util.js'
-import ItemList         from './ItemList.jsx'
-import ZipCode          from './ZipCode.jsx'
-import UserOwnedList    from './Ownedlist.jsx'
-import UserBorrowedList from './Borrowedlist.jsx'
-import PostNew          from './PostNew.jsx'
-import Footer           from './Footer.jsx'
-import Topbar           from './Topbar.jsx'
-import SignUp           from './SignUp.jsx'
+import React             from 'react'
+import ReactDOM          from 'react-dom'
+import ajax              from '../helpers/ajaxAdapter.js'
+import util              from '../helpers/util.js'
+import ItemList          from './ItemList.jsx'
+import ZipCode           from './ZipCode.jsx'
+import UserOwnedList     from './Ownedlist.jsx'
+import UserBorrowedList  from './Borrowedlist.jsx'
+import PostNew           from './PostNew.jsx'
+import Footer            from './Footer.jsx'
+import Topbar            from './Topbar.jsx'
+import SignUp            from './SignUp.jsx'
+import LoginForm         from './LoginForm.jsx'
 import {Grid, Row, Col } from 'react-bootstrap';
 // import { Grid, Row, Col } from 'react-bootstrap';
 // import JumboTron          from './Jumbotron.jsx'
@@ -21,7 +22,7 @@ export default class App extends React.Component{
     super();
 
     this.state = {
-      user: 1,
+      user: 0,
       zip: 11230,
       localItems: {},
       ownedItems: {},
@@ -75,7 +76,9 @@ export default class App extends React.Component{
       // })
   }
   addUser(newUser){
-    ajax.addNewUser(newUser)
+    ajax.addNewUser(newUser).then(data=>{
+      this.setState.user(data.user_id)
+    })
   }
 
   onSubmitBorrow(event){
@@ -124,8 +127,11 @@ export default class App extends React.Component{
       )
     } else {
       userMessage = (
+        <div>
         <SignUp
-        addItem={this.addUser.bind(this)}/>
+        addItem={this.addUser.bind(this)} />
+        <LoginForm />
+        </div>
       )
     }
 

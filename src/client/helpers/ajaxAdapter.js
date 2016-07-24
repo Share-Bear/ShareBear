@@ -76,6 +76,7 @@ const ajaxAdapter ={
     })
   },
   addNewUser(user){
+    console.log('hello')
     return fetch(`/users/new`, {
       method: 'POST',
       headers: {
@@ -84,15 +85,29 @@ const ajaxAdapter ={
       body : JSON.stringify({
         user_name: user.user_name,
         email: user.email,
-        password_digest: user.password_digest,
+        password: user.password,
         address: user.address,
         zipcode: user.zipcode})
       }).then( r=> {
-
         console.log(r)
         r.json()
     })
   },
+  loginUser(user){
+    return fetch(`/users/authenticate/:id`, {
+      method: 'POST',
+      headers: {
+        "Content-type": "application/json; charset=UTF-8"
+      },
+      body : JSON.stringify({
+        email: user.email,
+        password: user.password_digest})
+      }).then( r=> {
+        localStorage.setItem('token', r.token)
+        console.log(r)
+        r.json()
+    })
+  }
 
 }
 export default ajaxAdapter;
