@@ -14,7 +14,7 @@ h1 {
     font-family: 'Oswald', sans-serif;
     padding:20px;
     font-weight: 900;
-    color: white
+    color: black
   }
 
 h2 {
@@ -29,14 +29,24 @@ h3 {
 
 
 }
-.topbar {
-  height:50px;
-  background-color: #46433A;
-  text-align: right;
-  color:#fff;
-  padding:25px;
+
+.login-form{
+  float: right
+}
+.login-input{
+  height: 70%;
+  width: 200px;
+  margin: 7px auto;
 }
 
+.navbar{
+  height: 30px;
+  background-color: #303F9F;
+  margin: 0px;
+  border: none;
+  border-radius: 0px
+
+}
 .outer{
   width: 80%;
   margin: auto;
@@ -97,6 +107,10 @@ button  {
   margin-top: 0px
 }
 
+.item-panel{
+  width: 90%;
+}
+
 .users-things{
   width: 40%;
   margin: auto;
@@ -110,6 +124,11 @@ button  {
 .edit-container {
   width: 50px;
   margin-right: 0px;
+}
+
+.available-items-container{
+  background-color: white;
+   box-shadow:2px 2px 10px 10px #C9C9C9;
 }
 
 

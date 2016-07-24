@@ -15,6 +15,16 @@ export default class LoginForm extends React.Component {
     };
 
   }
+  handleSubmit(event) {
+     event.preventDefault();
+     const newUser= {
+       email: event.target.elements.email.value,
+       password_digest: event.target.elements.password_digest.value
+     }
+     ajax.loginUser(newUser).then(data=>{
+       console.log('LOGGED IN!')
+     })
+  }
 
   close() {
     this.setState({ showModal: false });
