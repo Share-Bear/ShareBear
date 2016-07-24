@@ -199,7 +199,6 @@ export default class App extends React.Component{
          <Footer />
         </div>
       </div>
-        <Logout clearLocalStorage= {this.clearLocalStorage.bind(this)} />
       </container>
     )
   }
