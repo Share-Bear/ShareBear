@@ -5,7 +5,7 @@ import ajax              from '../helpers/ajaxAdapter.js'
 import util              from '../helpers/util.js'
 import ItemList          from './ItemList.jsx'
 import ZipCode           from './ZipCode.jsx'
-import UserOwnedList     from './Ownedlist.jsx'
+// import UserOwnedList     from './Ownedlist.jsx'
 import UserBorrowedList  from './Borrowedlist.jsx'
 import PostNew           from './PostNew.jsx'
 import Footer            from './Footer.jsx'
@@ -149,9 +149,6 @@ export default class App extends React.Component{
       )
       userItemsInfo=(
         <div className="users-things">
-          <div className="ownedContainer">
-            <UserOwnedList list={this.state.ownedItems} onSubmitDelete= {this.onSubmitDelete.bind(this)}  />
-          </div>
           <div className="borrowedContainer">
             <UserBorrowedList list={this.state.borrowedItems} onSubmitReturn= {this.onSubmitReturn.bind(this)} />
           </div>
