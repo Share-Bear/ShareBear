@@ -166,11 +166,10 @@ button  {
 }
 
 /*  Borrow Button */
-.borrow.btn.btn-info {
-
+.borrow.btn {
 
   background-color: #64B6B1;
-    border-color: #64B6B1;
+  border-color: #64B6B1;
 }
 
 
