@@ -6,7 +6,7 @@ import util              from '../helpers/util.js'
 import ItemList          from './ItemList.jsx'
 import ZipCode           from './ZipCode.jsx'
 // import UserOwnedList     from './Ownedlist.jsx'
-import UserBorrowedList  from './Borrowedlist.jsx'
+// import UserBorrowedList  from './Borrowedlist.jsx'
 import PostNew           from './PostNew.jsx'
 import Footer            from './Footer.jsx'
 import Topbar            from './Topbar.jsx'
@@ -146,13 +146,6 @@ export default class App extends React.Component{
         <PostNew
         addItem={this.addItems.bind(this)}
         currentUser={this.state.user} />
-      )
-      userItemsInfo=(
-        <div className="users-things">
-          <div className="borrowedContainer">
-            <UserBorrowedList list={this.state.borrowedItems} onSubmitReturn= {this.onSubmitReturn.bind(this)} />
-          </div>
-        </div>
       )
 
     } else {
