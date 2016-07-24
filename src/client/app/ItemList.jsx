@@ -18,6 +18,17 @@ export default class ItemList extends React.Component{
      this.setState({ open: !this.state.open })
   }
   render(){
+    let borrowBtn;
+
+    if(this.props.currentUser){
+      borrowBtn=(
+        <button className="borrow btn btn-info"
+              type="button" value={this.props.item.item_id}
+              onClick={this.props.onSubmitBorrow}>
+              borrow this!
+        </button>
+      )
+    }
     return (
       <Panel collapsible
         expanded={this.state.open}
@@ -28,14 +39,12 @@ export default class ItemList extends React.Component{
           </Button>
         }
       >
-      {this.props.item.item_desc}
-      {this.props.item.zipcode}
-      {this.props.item.user_name}
-        <button className="borrow btn btn-info"
-              type="button" value={this.props.item.item_id}
-              onClick={this.props.onSubmitBorrow}>
-              borrow this!
-        </button>
+      <ul>
+        <li>{this.props.item.item_desc}</li>
+        <li>{this.props.item.zipcode}</li>
+        <li>{this.props.item.user_name}</li>
+      </ul>
+      {borrowBtn}
       </Panel>
     )
   }
