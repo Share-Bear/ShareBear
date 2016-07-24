@@ -21,7 +21,7 @@ export default class App extends React.Component{
     super();
 
     this.state = {
-      user: 1,
+      user: '',
       zip: 11230,
       localItems: {},
       ownedItems: {},
