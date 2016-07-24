@@ -30,7 +30,7 @@ export default class ItemList extends React.Component{
       >
       {this.props.item_desc}
         <button className="borrow btn btn-info"
-              type="button"
+              type="button" value={this.props.item.item_id}
               onClick={this.props.onSubmitBorrow}>
               borrow this!
         </button>

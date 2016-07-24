@@ -3,15 +3,6 @@ const { getAllUsers, getUser, addUser, userBorrowed, userOwned, updateUser, dele
 
 const tokenService = require('../models/tokens.js')
 
-// show all users
-router.get('/', getAllUsers, (req,res) => {
-  res.json( res.users.map( user=>{
-      /*only pull out the username and the id*/
-      const {user_id, user_name, zipcode} = user;
-      return {user_id, user_name, zipcode}
-    })
-  )
-});
 
 //add a new user
 router.post('/new', addUser, (req,res) => {

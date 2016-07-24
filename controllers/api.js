@@ -4,5 +4,13 @@ const { getAllUsers, getUser, addUser, userBorrowed, userOwned, updateUser, dele
 
 router.post('/authenticate/:id', getUser, tokenService.createToken)
 
+router.get('/', getAllUsers, (req,res) => {
+  res.json( res.rows.map( user=>{
+      /*only pull out the username and the id*/
+      const {user_id, user_name, zipcode} = user;
+      return {user_id, user_name, zipcode}
+    })
+  )
+});
 
 module.exports = router;
