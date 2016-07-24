@@ -6,10 +6,15 @@
 /*li{
   display: inline;
 }*/
+
+body {
+  background-color: #F5F5F5
+}
 h1 {
     font-family: 'Oswald', sans-serif;
     padding:20px;
     font-weight: 900;
+    color: white
   }
 
 h2 {
@@ -46,10 +51,11 @@ button  {
 
 .jumbotron {
 
-  background-color: #00B7FF;
-  /*width: 100%;*/
+  background-color: #3F51B5;
+  width: 100%;
   text-align: center;
-  box-shadow: -10px 4px 5px #888888;
+  box-shadow: -10px 8px 5px #888888;
+  color: white
 }
 
 .post-container {
@@ -62,7 +68,7 @@ button  {
   margin-top: 50px;
   height: 60px;
   width: 500px;
-  background-color: #0FE11D;
+  background-color: #CDDC39;
   border: none;
   font-size: 18px;
   color: white;
@@ -144,9 +150,10 @@ button  {
     margin: 0px;
 }
 
-.zip.btn.btn-primary {
-  background-color: #cc3333;
+.zip-btn {
+  background-color: #303F9F;
   margin-top:10px;
+  height: 40px;
   border:none;
 }
 .zip.btn.btn-primary:hover {
