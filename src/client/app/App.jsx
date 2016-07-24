@@ -55,16 +55,18 @@ export default class App extends React.Component{
   updateZip(event){
     const here = this;
     event.preventDefault();
-    let zipNew = event.target.firstChild.value;
+    let zipNew = event.target.zip_name.value;
+    console.log(zipNew)
     this.setState({zip: zipNew})
-    let myZip = this.state.zip;
-    let myItems = this.state.localItems;
-    ajax.getItemsByZip(myZip)
+    ajax.getItemsByZip(zipNew)
       .then( data=>{
         function forRightUser(item) {
           return item.owner_id !== here.state.user
         }
-        var filtered = data.filter(forRightUser);
+        function notBorrowed(item){
+        return !item.borrower_id
+      }
+        var filtered = data.filter(forRightUser).filter(notBorrowed);
         this.setState({localItems: filtered.indexByKey('item_id')})
       })
   }
@@ -140,7 +142,9 @@ export default class App extends React.Component{
 
   render (){
     let homeButton;
-    let userItemsInfo
+    let userItemsInfo;
+    let UserItemMargin
+
     if (this.state.user) {
       homeButton = (
         <PostNew
@@ -157,6 +161,7 @@ export default class App extends React.Component{
           </div>
         </div>
       )
+
     } else {
       homeButton = (
         <div>
@@ -164,11 +169,12 @@ export default class App extends React.Component{
         addItem={this.addUser.bind(this)} />
         </div>
       )
+      UserItemMargin={"margin": "auto 20%"}
     }
 
     return (
       <container className="">
-      <Topbar handleLogin={this.handleLogin.bind(this)}/>
+      <Topbar handleLogin={this.handleLogin.bind(this)} currentUser={this.state.user}/>
       <div className="bigBody">
         <div className="jumbotron">
           <h1>Welcome to ShareBear</h1>
@@ -178,14 +184,12 @@ export default class App extends React.Component{
           </div>
         </div>
         <div className="outer">
-          <div className="item-list">
+          <div className="item-list" style={UserItemMargin}>
             <h1> Things Near You </h1>
               {Object.keys(this.state.localItems)
                 .map(key=>(
                   <ItemList
                     item={this.state.localItems[key]}
-                    item_name={this.state.localItems[key].item_name}
-                    item_desc={this.state.localItems[key].item_desc}
                     onSubmitBorrow= {this.onSubmitBorrow.bind(this)}
                   />
                 ))

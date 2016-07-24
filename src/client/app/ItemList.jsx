@@ -24,11 +24,13 @@ export default class ItemList extends React.Component{
         className='item-panel'
         header={
           <Button onClick={this.handleClick.bind(this)}>
-            {this.props.item_name}
+            {this.props.item.item_name}
           </Button>
         }
       >
-      {this.props.item_desc}
+      {this.props.item.item_desc}
+      {this.props.item.zipcode}
+      {this.props.item.user_name}
         <button className="borrow btn btn-info"
               type="button" value={this.props.item.item_id}
               onClick={this.props.onSubmitBorrow}>

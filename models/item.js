@@ -6,7 +6,7 @@ const db = require('./connections.js')
 
 //get all items that are using share bear
 function getAllItems(req,res,next) {
-  db.any(`SELECT * FROM items`)
+  db.any(`SELECT item_id, item_name, item_desc, owner_id, borrower_id, zipcode, checked_out, user_name FROM items join users on items.owner_id=users.user_id `)
     .then(data => {
       res.rows = data;
       next();
