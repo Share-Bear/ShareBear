@@ -1,6 +1,5 @@
 'use strict'
 import React            from 'react';
-import {Panel}          from 'react-bootstrap'
 import Edit             from './EditButton.jsx'
 
 export default class UserOwnedList extends React.Component{
