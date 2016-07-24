@@ -31,6 +31,7 @@ export default class App extends React.Component{
   }
 
   componentDidMount(){
+    console.log(localStorage)
     const here = this;
     ajax.getBorrowedItems(this.state.user).then(data=>{
       this.setState({borrowedItems: data.indexByKey('item_id')})
@@ -84,6 +85,7 @@ export default class App extends React.Component{
   onSubmitBorrow(event){
     event.preventDefault();
     var item=event.target.value
+    console.log(event.target.value)
     ajax.borrowItem(item, this.state.user)
     .then(data=>{
       var moved = (this.state.localItems[ data ]);
@@ -118,6 +120,7 @@ export default class App extends React.Component{
     })
   }
   handleLogin(event){
+    var here= this
     event.preventDefault();
     const newUser= {
       email: event.target.elements.email.value,
@@ -125,6 +128,9 @@ export default class App extends React.Component{
     }
     ajax.loginUser(newUser).then(res=>{
       this.setState({user: res.user})
+      here.componentDidMount()
+
+
     })
   }
   render (){
@@ -172,7 +178,7 @@ export default class App extends React.Component{
               {Object.keys(this.state.localItems)
                 .map(key=>(
                   <ItemList
-                    key={key}
+                    item={this.state.localItems[key]}
                     item_name={this.state.localItems[key].item_name}
                     item_desc={this.state.localItems[key].item_desc}
                     onSubmitBorrow= {this.onSubmitBorrow.bind(this)}
