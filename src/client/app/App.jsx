@@ -22,7 +22,7 @@ export default class App extends React.Component{
     super();
 
     this.state = {
-      user: 0,
+      user: 1,
       zip: 11230,
       localItems: {},
       ownedItems: {},
@@ -149,17 +149,19 @@ export default class App extends React.Component{
         </div>
         <div className="outer">
           <div className="item-list">
-          <h1> Things Near You </h1>
-            {Object.keys(this.state.localItems)
-              .map(key=>(
-                <ItemList
-                  key={key}
-                  item_name={this.state.localItems[key].item_name}
-                  item_desc={this.state.localItems[key].item_desc}
-                  onSubmitBorrow= {this.onSubmitBorrow.bind(this)}
-                />
-              ))
-            }
+            <h1> Things Near You </h1>
+            <div className="available-items-container">
+              {Object.keys(this.state.localItems)
+                .map(key=>(
+                  <ItemList
+                    key={key}
+                    item_name={this.state.localItems[key].item_name}
+                    item_desc={this.state.localItems[key].item_desc}
+                    onSubmitBorrow= {this.onSubmitBorrow.bind(this)}
+                  />
+                ))
+              }
+            </div>
           </div>
           <div className="users-things">
             <div className="ownedContainer">
