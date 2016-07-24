@@ -31,6 +31,7 @@ export default class App extends React.Component{
   }
 
   componentDidMount(){
+    console.log(window.localStorage)
     const here = this;
     ajax.getBorrowedItems(this.state.user).then(data=>{
       this.setState({borrowedItems: data.indexByKey('item_id')})
@@ -118,6 +119,7 @@ export default class App extends React.Component{
     })
   }
   handleLogin(event){
+    var here= this
     event.preventDefault();
     const newUser= {
       email: event.target.elements.email.value,
@@ -125,6 +127,9 @@ export default class App extends React.Component{
     }
     ajax.loginUser(newUser).then(res=>{
       this.setState({user: res.user})
+      here.componentDidMount()
+
+
     })
   }
   render (){
