@@ -22,7 +22,7 @@ export default class App extends React.Component{
     super();
 
     this.state = {
-      user: 1,
+      user: 0,
       zip: 11230,
       localItems: {},
       ownedItems: {},
@@ -140,14 +140,13 @@ export default class App extends React.Component{
         <div>
         <SignUp
         addItem={this.addUser.bind(this)} />
-        <LoginForm handleLogin={this.handleLogin.bind(this)} />
         </div>
       )
     }
 
     return (
       <container className="">
-      <Topbar />
+      <Topbar handleLogin={this.handleLogin.bind(this)}/>
       <div className="bigBody">
         <div className="jumbotron">
           <h1>Welcome to ShareBear</h1>

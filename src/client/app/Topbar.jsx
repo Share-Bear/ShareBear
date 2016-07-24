@@ -1,9 +1,21 @@
 import React from 'react';
 import { Button } from 'react-bootstrap';
+import ajax              from '../helpers/ajaxAdapter.js';
+
 
 require
 
 export default class Footer extends React.Component{
+  constructor(){
+
+    super();
+
+    this.state= {
+      showModal: false,
+      user: ''
+    };
+
+  }
   handleSubmit(event) {
     event.preventDefault();
     const newUser= {
@@ -22,7 +34,7 @@ export default class Footer extends React.Component{
   }
   render() {
     return (
-      <div className = "navbar navbar-default navbar-fixed-top">
+      <div className = "navbar navbar-default">
         <form onSubmit = {this.handleSubmit.bind(this)} className="login-form">
           <div className = "login-input col-xs-2">
             <input type="text" className="form-control inputdefault" name="email" placeholder="Email" />

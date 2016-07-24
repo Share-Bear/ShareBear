@@ -35,11 +35,17 @@ h3 {
 }
 .login-input{
   height: 70%;
-  width: 100px
+  width: 200px;
+  margin: 7px auto;
 }
 
 .navbar{
-  height: 30px
+  height: 30px;
+  background-color: #303F9F;
+  margin: 0px;
+  border: none;
+  border-radius: 0px
+
 }
 .outer{
   width: 80%;
