@@ -32,7 +32,6 @@ export default class App extends React.Component{
   }
 
   componentDidMount(){
-    console.log(localStorage)
     const here = this;
     ajax.getBorrowedItems(this.state.user).then(data=>{
       this.setState({borrowedItems: data.indexByKey('item_id')})
@@ -56,7 +55,6 @@ export default class App extends React.Component{
     const here = this;
     event.preventDefault();
     let zipNew = event.target.zip_name.value;
-    console.log(zipNew)
     this.setState({zip: zipNew})
     ajax.getItemsByZip(zipNew)
       .then( data=>{
@@ -88,7 +86,6 @@ export default class App extends React.Component{
   onSubmitBorrow(event){
     event.preventDefault();
     var item=event.target.value
-    console.log(event.target.value)
     ajax.borrowItem(item, this.state.user)
     .then(data=>{
       var moved = (this.state.localItems[ data ]);
@@ -112,7 +109,6 @@ export default class App extends React.Component{
   onSubmitReturn(event){
     event.preventDefault();
     var item=event.target.value
-    console.log(this.state.borrowedItems[ item ])
     ajax.returnItem(item)
     .then(data=>{
       let moved = (this.state.borrowedItems[ item ]);

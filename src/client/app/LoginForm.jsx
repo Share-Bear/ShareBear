@@ -22,7 +22,6 @@ export default class LoginForm extends React.Component {
        password_digest: event.target.elements.password_digest.value
      }
      ajax.loginUser(newUser).then(data=>{
-       console.log('LOGGED IN!')
      })
   }
 

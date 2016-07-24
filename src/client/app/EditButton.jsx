@@ -48,7 +48,6 @@ export default class Edit extends React.Component{
     var here= this
     ajax.updateItem(here.state.id, here.state.name, here.state.desc)
       .then(data=>{
-        console.log('changed')
       })
   }
   render(){

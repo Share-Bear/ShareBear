@@ -30,7 +30,6 @@ export default class PostNew extends React.Component{
       desc: event.target.elements.item_desc.value,
       owner: this.props.currentUser
     }
-    console.log('this is the object generated in PostNew.jsx', newItem)
     this.props.addItem(newItem);
   }
   render(){
