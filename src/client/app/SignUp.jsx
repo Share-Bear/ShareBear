@@ -33,7 +33,6 @@ export default class PostNew extends React.Component{
       address: event.target.elements.address.value,
       zipcode: event.target.elements.zipcode.value,
     }
-    console.log(newUser)
     ajax.addNewUser(newUser)
   }
   render(){

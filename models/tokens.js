@@ -25,9 +25,9 @@ module.exports={
     return res.json({
       success: true,
       message: 'Enjoy your token!',
-      token: token
+      token: token,
+      user: res.user.user_id
     });
-    console.log(res.token)
   },
 
   validateToken(req,res,next){
