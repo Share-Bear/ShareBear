@@ -22,7 +22,7 @@ export default class App extends React.Component{
     super();
 
     this.state = {
-      user: 1,
+      user: 0,
       zip: 11230,
       localItems: {},
       ownedItems: {},
@@ -128,15 +128,26 @@ export default class App extends React.Component{
     })
   }
   render (){
-    let userMessage;
+    let homeButton;
+    let userItemsInfo
     if (this.state.user) {
-      userMessage = (
+      homeButton = (
         <PostNew
         addItem={this.addItems.bind(this)}
         currentUser={this.state.user} />
       )
+      userItemsInfo=(
+        <div className="users-things">
+          <div className="ownedContainer">
+            <UserOwnedList list={this.state.ownedItems} onSubmitDelete= {this.onSubmitDelete.bind(this)}  />
+          </div>
+          <div className="borrowedContainer">
+            <UserBorrowedList list={this.state.borrowedItems} onSubmitReturn= {this.onSubmitReturn.bind(this)} />
+          </div>
+        </div>
+      )
     } else {
-      userMessage = (
+      homeButton = (
         <div>
         <SignUp
         addItem={this.addUser.bind(this)} />
@@ -152,12 +163,11 @@ export default class App extends React.Component{
           <h1>Welcome to ShareBear</h1>
           <div className='post-container'>
             <ZipCode zip={this.updateZip.bind(this)} />
-            {userMessage}
+            {homeButton}
           </div>
         </div>
         <div className="outer">
           <div className="item-list">
-            <div className="available-items-container">
             <h1> Things Near You </h1>
               {Object.keys(this.state.localItems)
                 .map(key=>(
@@ -169,16 +179,8 @@ export default class App extends React.Component{
                   />
                 ))
               }
-            </div>
           </div>
-          <div className="users-things">
-            <div className="ownedContainer">
-              <UserOwnedList list={this.state.ownedItems} onSubmitDelete= {this.onSubmitDelete.bind(this)}  />
-            </div>
-            <div className="borrowedContainer">
-              <UserBorrowedList list={this.state.borrowedItems} onSubmitReturn= {this.onSubmitReturn.bind(this)} />
-            </div>
-          </div>
+            {userItemsInfo}
          <Footer />
         </div>
       </div>
