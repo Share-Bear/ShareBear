@@ -40,9 +40,9 @@ export default class ItemList extends React.Component{
         }
       >
       <ul>
-        <li>{this.props.item.item_desc}</li>
-        <li>{this.props.item.zipcode}</li>
-        <li>{this.props.item.user_name}</li>
+        <li><strong> Description: </strong> {this.props.item.item_desc}</li>
+        <li><strong> Zipcode: </strong>{this.props.item.zipcode}</li>
+        <li><strong> Posted By: </strong>{this.props.item.user_name}</li>
       </ul>
       {borrowBtn}
       </Panel>
