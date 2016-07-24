@@ -18,7 +18,7 @@ router.post('/new', addUser, (req,res) => {
     res.send(res.rows)
 });
 
-router.use( tokenService.validateToken )
+// router.use( tokenService.validateToken )
 
 // Show a single user
 router.get('/:id', getUser, (req,res) => {
