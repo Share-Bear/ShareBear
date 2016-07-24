@@ -117,6 +117,16 @@ export default class App extends React.Component{
       this.setState({BorrowedItems: this.state.BorrowedItems})
     })
   }
+  handleLogin(event){
+    event.preventDefault();
+    const newUser= {
+      email: event.target.elements.email.value,
+      password_digest: event.target.elements.password_digest.value
+    }
+    ajax.loginUser(newUser).then(res=>{
+      this.setState({user: res.user})
+    })
+  }
   render (){
     let userMessage;
     if (this.state.user) {
@@ -130,7 +140,7 @@ export default class App extends React.Component{
         <div>
         <SignUp
         addItem={this.addUser.bind(this)} />
-        <LoginForm />
+        <LoginForm handleLogin={this.handleLogin.bind(this)} />
         </div>
       )
     }
@@ -143,7 +153,6 @@ export default class App extends React.Component{
           <h1>Welcome to ShareBear</h1>
           <div className='post-container'>
             <ZipCode zip={this.updateZip.bind(this)} />
-            {console.log(userMessage)}
             {userMessage}
           </div>
         </div>

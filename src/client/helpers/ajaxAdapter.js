@@ -94,7 +94,7 @@ const ajaxAdapter ={
     })
   },
   loginUser(user){
-    return fetch(`/users/authenticate/:id`, {
+    return fetch(`/api/authenticate/:id`, {
       method: 'POST',
       headers: {
         "Content-type": "application/json; charset=UTF-8"
@@ -102,10 +102,13 @@ const ajaxAdapter ={
       body : JSON.stringify({
         email: user.email,
         password: user.password_digest})
-      }).then( r=> {
-        localStorage.setItem('token', r.token)
-        console.log(r)
-        r.json()
+      }).then(res=>{
+      return res.json()
+      }).then( res=> {
+        console.log(res)
+        localStorage.setItem('token', res.token)
+        localStorage.setItem('token', res.user_id)
+        return(res)
     })
   }
 

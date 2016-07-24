@@ -9,6 +9,7 @@ const app           = express();
 const bodyParser    = require('body-parser');
 const userRoute = require('./controllers/user.js');
 const itemRoute = require('./controllers/item.js');
+const apiRoute = require('./controllers/api.js');
 const PORT          = process.argv[2] || process.env.port || 3000;
 
 app.set('superSecret', 'I love pizza')
@@ -19,5 +20,6 @@ app.use(bodyParser.json());
 
 app.use('/users', userRoute)
 app.use('/items', itemRoute)
+app.use('/api', apiRoute)
 
 app.listen(PORT, ()=> console.log('server started, listening on', PORT));
