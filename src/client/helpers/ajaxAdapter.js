@@ -107,7 +107,7 @@ const ajaxAdapter ={
       }).then( res=> {
         console.log(res)
         localStorage.setItem('token', res.token)
-        localStorage.setItem('token', res.user_id)
+        localStorage.setItem('user', res.user)
         return(res)
     })
   }
