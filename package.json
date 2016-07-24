@@ -3,12 +3,16 @@
   "version": "1.0.0",
   "description": "A website for neighbors to share items with other neighbors",
   "main": "server.js",
+   "engines": {
+    "node": "6.2.0"
+  },
+  "private": true,
   "scripts": {
-    "clean": "rm -rf dist",
-    "watch": "webpack --watch",
-    "prebuild": "npm run clean -s; npm install",
-    "build": "webpack --progress --colors",
-    "start": "node server.js"
+    "clean": "rm -rf dist && rm -rf node_modules",
+    "heroku-prebuild": "scripts/deployReact.sh",
+    "heroku-postbuild": "rm -rf db src scripts starter_resources webpack.config.js .babelrc .gitignore README.md LICENSE",
+    "start": "node server.js",
+    "watch": "webpack -d --watch --progress --colors"
   },
   "repository": {
     "type": "git",
