@@ -12,6 +12,7 @@ import Footer            from './Footer.jsx'
 import Topbar            from './Topbar.jsx'
 import SignUp            from './SignUp.jsx'
 import LoginForm         from './LoginForm.jsx'
+import Logout            from './Logout.jsx'
 import {Grid, Row, Col } from 'react-bootstrap';
 // import { Grid, Row, Col } from 'react-bootstrap';
 // import JumboTron          from './Jumbotron.jsx'
@@ -22,7 +23,7 @@ export default class App extends React.Component{
     super();
 
     this.state = {
-      user: 0,
+      user: Number.parseInt(localStorage.user),
       zip: 11230,
       localItems: {},
       ownedItems: {},
@@ -129,10 +130,14 @@ export default class App extends React.Component{
     ajax.loginUser(newUser).then(res=>{
       this.setState({user: res.user})
       here.componentDidMount()
-
-
     })
   }
+  clearLocalStorage(event){
+    localStorage.setItem('token','');
+    localStorage.setItem('user','');
+    this.setState({user: localStorage.user})
+  }
+
   render (){
     let homeButton;
     let userItemsInfo
@@ -190,7 +195,7 @@ export default class App extends React.Component{
          <Footer />
         </div>
       </div>
-
+        <Logout clearLocalStorage= {this.clearLocalStorage.bind(this)} />
       </container>
     )
   }
