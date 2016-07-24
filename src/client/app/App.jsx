@@ -174,7 +174,7 @@ export default class App extends React.Component{
 
     return (
       <container className="">
-      <Topbar handleLogin={this.handleLogin.bind(this)} currentUser={this.state.user}/>
+      <Topbar handleLogin={this.handleLogin.bind(this)} currentUser={this.state.user} clearLocalStorage= {this.clearLocalStorage.bind(this)}/>
       <div className="bigBody">
         <div className="jumbotron">
           <h1>Welcome to ShareBear</h1>
