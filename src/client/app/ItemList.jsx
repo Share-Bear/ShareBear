@@ -29,9 +29,17 @@ export default class ItemList extends React.Component{
         }
       >
       {this.props.item_desc}
+        <button className="borrow btn btn-info"
+              type="button"
+              onClick={this.props.onSubmitBorrow}>
+              borrow this!
+        </button>
       </Panel>
     )
   }
+
+                // value={props.list[key].item_id}>
+
 
 }
 

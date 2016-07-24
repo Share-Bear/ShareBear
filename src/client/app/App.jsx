@@ -22,7 +22,7 @@ export default class App extends React.Component{
     super();
 
     this.state = {
-      user: 0,
+      user: 1,
       zip: 11230,
       localItems: {},
       ownedItems: {},
@@ -157,8 +157,8 @@ export default class App extends React.Component{
         </div>
         <div className="outer">
           <div className="item-list">
-            <h1> Things Near You </h1>
             <div className="available-items-container">
+            <h1> Things Near You </h1>
               {Object.keys(this.state.localItems)
                 .map(key=>(
                   <ItemList
