@@ -140,7 +140,9 @@ export default class App extends React.Component{
 
   render (){
     let homeButton;
-    let userItemsInfo
+    let userItemsInfo;
+    let UserItemMargin
+
     if (this.state.user) {
       homeButton = (
         <PostNew
@@ -157,6 +159,7 @@ export default class App extends React.Component{
           </div>
         </div>
       )
+
     } else {
       homeButton = (
         <div>
@@ -164,11 +167,12 @@ export default class App extends React.Component{
         addItem={this.addUser.bind(this)} />
         </div>
       )
+      UserItemMargin={"margin": "auto 20%"}
     }
 
     return (
       <container className="">
-      <Topbar handleLogin={this.handleLogin.bind(this)}/>
+      <Topbar handleLogin={this.handleLogin.bind(this) currentUser={this.state.user.bind(this)}}/>
       <div className="bigBody">
         <div className="jumbotron">
           <h1>Welcome to ShareBear</h1>
@@ -178,7 +182,7 @@ export default class App extends React.Component{
           </div>
         </div>
         <div className="outer">
-          <div className="item-list">
+          <div className="item-list" style={UserItemMargin}>
             <h1> Things Near You </h1>
               {Object.keys(this.state.localItems)
                 .map(key=>(
