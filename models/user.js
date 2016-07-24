@@ -56,7 +56,10 @@ function getUser(req,res,next) {
 
 //add a new user
 function addUser(req,res,next) {
-  db.any(`INSERT INTO users (user_name, email, address, zipcode, password_digest) VALUES($1, $2, $3, $4);`, [req.body.user_name, req.body.email, req.body.address, req.body.zipcode, hash])
+  db.any(`INSERT INTO users (
+      user_name, email, address, zipcode, password_digest
+      ) VALUES($1, $2, $3, $4);`,
+      [req.body.user_name, req.body.email, req.body.address, req.body.zipcode, hash])
     .then(data => {
       res.rows = data;
       next();
