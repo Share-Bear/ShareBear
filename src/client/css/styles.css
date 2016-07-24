@@ -15,17 +15,24 @@ body {
     padding:20px;
     font-weight: 900;
     color: #E54028;
+
   }
 
   div .jumbotron {
     background-color: #FFF;
+     border-bottom: .25px solid #ccc;
   }
 
   .jumbotron h3, span {
 
    color: #616161;
-  }
 
+  }
+h1 {
+    font-family: 'Oswald', sans-serif;
+    padding:20px;
+    font-weight: 700;
+  }
 h2 {
     font-family: 'Oswald', sans-serif;
     padding:20px;
@@ -217,7 +224,7 @@ button  {
 
 
 .ownedContainer h2 {
-  color: #61AE24;
+  color: #01A4A4;
 }
 
 
