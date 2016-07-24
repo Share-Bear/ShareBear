@@ -55,16 +55,18 @@ export default class App extends React.Component{
   updateZip(event){
     const here = this;
     event.preventDefault();
-    let zipNew = event.target.firstChild.value;
+    let zipNew = event.target.zip_name.value;
+    console.log(zipNew)
     this.setState({zip: zipNew})
-    let myZip = this.state.zip;
-    let myItems = this.state.localItems;
-    ajax.getItemsByZip(myZip)
+    ajax.getItemsByZip(zipNew)
       .then( data=>{
         function forRightUser(item) {
           return item.owner_id !== here.state.user
         }
-        var filtered = data.filter(forRightUser);
+        function notBorrowed(item){
+        return !item.borrower_id
+      }
+        var filtered = data.filter(forRightUser).filter(notBorrowed);
         this.setState({localItems: filtered.indexByKey('item_id')})
       })
   }
@@ -188,8 +190,6 @@ export default class App extends React.Component{
                 .map(key=>(
                   <ItemList
                     item={this.state.localItems[key]}
-                    item_name={this.state.localItems[key].item_name}
-                    item_desc={this.state.localItems[key].item_desc}
                     onSubmitBorrow= {this.onSubmitBorrow.bind(this)}
                   />
                 ))
