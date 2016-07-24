@@ -1,43 +1,36 @@
 /* Custom CSS to be delivered into the 'dist/' directory */
-/*@import url(https://fonts.googleapis.com/css?family=Noto+Serif);
-
-* {
-  font-family: 'Noto Serif', serif;
-}
-*/
-
 @import url(https://fonts.googleapis.com/css?family=Quicksand);
-
-
-
+@import  url('https://fonts.googleapis.com/css?family=Oswald');
 h1 {
     font-family: 'Quicksand', sans-serif;
+    padding:20px;
+    font-weight: 900;
+  }
+
+h2 {
+    font-family: 'Oswald', sans-serif;
     padding:20px;
     font-weight: 700;
   }
 
-.outer * {
-  margin: 7px;
-}
+h3 {
+    font-family: 'Quicksand', sans-serif;
+    padding:20px;
 
+
+}
 .topbar {
   height:50px;
   background-color: #46433A;
   text-align: right;
-
+  color:#fff;
+  padding:25px;
 }
 
 
-.left {
-
-  width:50%;
-  height: auto;
-  float: left;
-
-}
-
-.right {
-  float: right;
+.outer, button  {
+  margin: 8px;
+  padding:2px;
 }
 
 .jumbotron {
@@ -49,15 +42,64 @@ h1 {
 .formHorizontal * {
     width:500px;
     /*width:100px;*/
-      margin: 0px auto;
+    margin: 0px auto;
     text-align: center;
 
 }
-.form-group {
-  text-align: center;
 
+.left {
+  width:50%;
+  height: auto;
+  float: left;
+}
+
+.right {
+  float: right;
 
 }
 
+.form-group {
+  text-align: center;
 
+}
+
+/*  Borrow Button */
+.borrow.btn.btn-info {
+
+
+  background-color: #64B6B1;
+    border-color: #64B6B1;
+}
+
+
+
+
+.itemListAc .panel-default  .panel-heading {
+    color: #000;
+    font-family: 'Quicksand';
+    font-weight: bold;
+    background-color: #FFF;
+}
+
+.zip.btn.btn-primary {
+  background-color: #cc3333;
+  margin-top:10px;
+  border:none;
+}
+.zip.btn.btn-primary:hover {
+  background-color: #cc0000;
+}
+
+.bigBody {
+
+}
+
+.page-footer.orange.text-center * {
+  clear:both;
+  text-align: center;
+  width: auto;
+  height:100px;
+  margin: 50px auto;
+  color: #ccc;
+}
 
