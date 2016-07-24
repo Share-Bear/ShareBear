@@ -10,14 +10,29 @@
 body {
   background-color: #F5F5F5
 }
-
-h1 {
+.jumbotron h1 {
     font-family: 'Oswald', sans-serif;
     padding:20px;
     font-weight: 900;
-    color: black
+    color: #E54028;
+
   }
 
+  div .jumbotron {
+    background-color: #FFF;
+     border-bottom: .25px solid #ccc;
+  }
+
+  .jumbotron h3, span {
+
+   color: #616161;
+
+  }
+h1 {
+    font-family: 'Oswald', sans-serif;
+    padding:20px;
+    font-weight: 700;
+  }
 h2 {
     font-family: 'Oswald', sans-serif;
     padding:20px;
@@ -42,7 +57,7 @@ h3 {
 
 .navbar{
   height: 30px;
-  background-color: #303F9F;
+  background-color: #616161;
   margin: 0px;
   border: none;
   border-radius: 0px
@@ -62,13 +77,16 @@ button  {
 
 .jumbotron {
 
-  background-color: #3F51B5;
   width: 100%;
   text-align: center;
-  box-shadow: 2px 2px 10px 5px #C9C9C9;
+  /*box-shadow: 2px 2px 10px 5px #C9C9C9;*/
   color: white
 }
 
+.item-list h1 {
+
+  color: #61AE24;
+}
 .post-container {
   width: 60%;
   margin: 0px 20%;
@@ -76,17 +94,17 @@ button  {
 }
 
 .post-new-btn{
-  margin-top: 50px;
+  margin-top: 5px;
   height: 60px;
   width: 500px;
-  background-color: #CDDC39;
+  background-color: #01A4A4;
   border: none;
   font-size: 18px;
   color: white;
 }
 
 .post-new-btn:hover{
-    background-color: #3DD102;
+    background-color: #00cccc;
     color: white;
 }
 
@@ -100,7 +118,7 @@ button  {
 
 .item-list{
   background-color: white;
-  box-shadow:2px 2px 10px 10px #C9C9C9;
+  /*box-shadow:2px 2px 10px 10px #C9C9C9;*/
   width: 60%;
   float: left;
 }
@@ -168,16 +186,24 @@ button  {
 }
 
 .zip-btn {
-  background-color: #303F9F;
-  margin-top:10px;
+  background-color: #32742C;;
+  margin-top:5px;
   height: 40px;
   border:none;
 }
-.zip.btn.btn-primary:hover {
-  background-color: #cc0000;
+.zip-btn:hover {
+  background-color: #61AE24;
+  margin-top:5px;
+  height: 40px;
+  border:none;
 }
 
+/*.zip.btn.btn-primary:hover {
+  background-color: #61AE24;
+}*/
+
 .bigBody {
+  background-color: #FFF;
 
 }
 
@@ -189,4 +215,25 @@ button  {
   margin: 50px auto;
   color: #ccc;
 }
+
+.modal-content *{
+  color: #616161;
+  padding:3px;
+  margin: 3px;
+}
+
+
+.ownedContainer h2 {
+  color: #01A4A4;
+}
+
+
+
+
+.list-group {
+
+
+}
+
+
 
