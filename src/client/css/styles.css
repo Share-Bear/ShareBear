@@ -1,7 +1,7 @@
 /* Custom CSS to be delivered into the 'dist/' directory */
 @import url(https://fonts.googleapis.com/css?family=Quicksand);
 @import  url('https://fonts.googleapis.com/css?family=Oswald');
-@import url(https://fonts.googleapis.com/css?family=Muli:300:300);
+@import url(https://fonts.googleapis.com/css?family=Oswald:300);
 
 /*li{
   display: inline;
@@ -14,16 +14,15 @@ body {
   background-color: #F5F5F5;
 }
 .jumbotron h1 {
-    font-family: 'Muli:300', sans-serif;
+    font-family: 'Oswald', sans-serif;
     padding:20px;
     font-weight: 900;
-    color: #212121;
+    color: #616161;
 
   }
 
   div .jumbotron {
     background-color: #FAFAFA;
-     border-bottom: .25px solid #ccc;
   }
 
   .jumbotron h3, span {
@@ -32,16 +31,16 @@ body {
 
   }
 h1 {
-    font-family: 'Muli:300', sans-serif;
+    font-family: 'Oswald', sans-serif;
     font-weight: 700;
   }
 h2 {
-    font-family: 'Muli:300', sans-serif;
+    font-family: 'Oswald', sans-serif;
     font-weight: 700;
   }
 
 h3 {
-    font-family: 'Muli:300', sans-serif;
+    font-family: 'Oswald', sans-serif;
     padding:20px;
 
 }
@@ -65,7 +64,7 @@ li{
 
 .navbar{
   height: 30px;
-  background-color: #E0E0E0;
+  background-color: #616161;
   margin: 0px;
   border: none;
   border-radius: 0px
@@ -89,14 +88,14 @@ button  {
 .jumbotron {
 
   width: 100%;
-  box-shadow: 10px 5px 2px #888888;
   text-align: center;
   /*box-shadow: 2px 2px 10px 5px #C9C9C9;*/
   color: white
 }
 
 .item-list h1 {
-  color: #FF5722;
+  color: #0FA3B1;
+  text-align: left
 }
 .post-container {
   width: 60%;
@@ -115,6 +114,11 @@ button  {
 }
 
 .post-new-btn:hover{
+  background-color: #ff3300;
+  color:white;
+}
+
+.post-new-btn{
     background-color: #FF5722;
     color: white;
 }
@@ -128,7 +132,7 @@ button  {
 }
 
 .item-list{
-  background-color: #f3f9f9;
+  background-color: white;
   /*box-shadow:2px 2px 10px 10px #C9C9C9;*/
   text-align: center;
   margin-right: 10%;
@@ -144,29 +148,29 @@ button  {
 .item-panel{
   width: 94%;
   margin: 0 auto;
+  color: #616161
 }
 
 .users-things{
   width: 40%;
   margin: auto;
   float: left;
-  background-color: #f3f9f9;
+  background-color: white;
   /*box-shadow:2px 2px 10px 10px #C9C9C9;*/
   text-align: center;
 }
 
 
 .logout-btn{
-  background-color: #0FA3B1;
+  background-color: white;
   margin-top: 10px;
   margin-right: 80px;
-  color: white;
+  color: #616161;
   border: none;
 }
 
 .users-things button{
-  margin-top: 0px;
-
+  margin-top: 0px
 }
 
 .edit-container {
@@ -175,16 +179,24 @@ button  {
 }
 
 .item-panel-btn {
+  color: #616161;
   width: 100%;
   margin: 0px;
   text-align: left;
 }
 
+.modal-content *{
+  padding: 3px;
+  margin: 3px;
+}
+
 .panel-heading {
+  color: #616161;
   padding: 0px;
 }
 
 .panel-body {
+  color: #616161;
   width: 100%;
   margin: 0;
   text-align: left;
@@ -208,23 +220,21 @@ button  {
 }
 
 /*  Borrow Button */
-.borrow.btn {
-  background-color: #32742C;
-    border-color: #32742C;
+.borrow-btn {
+  color: white;
+  background-color: #0FA3B1;
+  width: 100px;
+  margin: 0 35%;
 }
 
-.borrow.btn.btn-info:hover {
-
-
-  background-color: #61AE24;
-    border-color: #61AE24;
+.borrow-btn:hover{
+  background-color: #00cccc;
+  color: white;
 }
 
 
 .edit-btn{
-
-background-color: #01A4A4;
-border-color: #01A4A4; ;
+  float: right;
 }
 
 .itemListAc .panel-default  .panel-heading {
@@ -241,12 +251,12 @@ border-color: #01A4A4; ;
   border:none;
 }
 .zip-btn:hover {
-  background-color: #0FA3B1;
+  background-color: #00cccc;
+  color: white;
   margin-top:5px;
   height: 40px;
   border:none;
 }
-
 
 /*.zip.btn.btn-primary:hover {
   background-color: #FF5722;
@@ -274,53 +284,62 @@ border-color: #01A4A4; ;
 
 
 .ownedContainer h2 {
-  color: #0FA3B1;
-}
-
-.borrowedContainer * {
-color: #616161;;
-font-family: 'Oswald', sans-serif;
-margin:5px;
+  color: #FF5722;
+  text-align: left
 
 }
 
-.borrowedContainer li {
-  width:auto;
-  margin:5px;
-  padding:10px;
-  font-size: 1.2em;
-  border-bottom: .25px dashed #ccc;
-  display: inline-block;
+.ownedContainer {
+  background-color: #f3f9f9;
+  /*box-shadow:2px 2px 10px 10px #C9C9C9;*/
+  text-align: center;
+}
+
+.items-container {
+  background-color: white;
+  text-align: center;
+  padding: 10px;
+  color: #616161;
 }
 
 
-.borrowed.btn.btn-info {
-padding:5px;
-float: right;
-background-color: #ccc;
-color:#FFF;
-border-color:#ccc;
-}
-.borrowed.btn.btn-info:hover {
-
-background-color: #616161;
-color:#FFF;
-border-color:#ccc;
+.owned-hdr {
+    color: #0FA3B1;
+    text-align: left
 }
 
+.borrow-hdr {
+    color: #616161;
+    text-align: left
+}
 
-
-.users-things span{
-
+.return-btn {
+  color: white;
+  background-color: #616161;
+  border: none;
+  float: right;
+}
+.borrowed-thing {
   font-family: 'Oswald', sans-serif;
-  font-size: 16px;
-  color: #01A4A4;
+  color: black;
+  padding: 0px;
+  margin: 0px;
+  text-align: left;
+  border: none;
+  border-bottom: .25px dashed #ccc;
+}
+
+.owned-thing {
+  font-family: 'Oswald', sans-serif;
+  color: black;
+  padding: 0px;
+  margin: 0px;
+  text-align: left;
+
 }
 
 .btn-danger {
   border: none;
   float: right;
 }
-
-
 

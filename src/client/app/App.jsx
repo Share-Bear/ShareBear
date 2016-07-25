@@ -70,12 +70,21 @@ export default class App extends React.Component{
   }
 
 
-  addItems(newItem){
+  addItems(event){
+    event.preventDefault();
+    console.log(this.state.user)
+    let newItem = {
+      name: event.target.elements.item_name.value,
+      desc: event.target.elements.item_desc.value,
+      owner: this.state.user
+    }
+    console.log(newItem)
     ajax.addNewItem(newItem)
-      //  .then(data=>{
-      //   this.state.ownedItems[ data.item_id ] = data
-      //   this.setState({ownedItems: this.state.ownedItems})
-      // })
+       .then(res=>{
+        console.log(res)
+        this.state.ownedItems[ res[0].item_id ] = res[0]
+        this.setState({ownedItems: this.state.ownedItems})
+      })
   }
   addUser(newUser){
     ajax.addNewUser(newUser).then(data=>{
@@ -165,7 +174,7 @@ export default class App extends React.Component{
         addItem={this.addUser.bind(this)} />
         </div>
       )
-      UserItemMargin={"margin": "auto 20%"}
+      UserItemMargin={"margin": "auto 30%"}
     }
 
     return (

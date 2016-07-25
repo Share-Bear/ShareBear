@@ -7,11 +7,11 @@ export default class UserOwnedList extends React.Component{
   render(){
     return(
       <div className="list-group items-container">
-      <h2>Items You've Posted</h2>
+      <h2 className="owned-hdr">Items You've Posted</h2>
         <div>
           {Object.keys(this.props.list)
             .map(key=>(
-              <Panel key={key} className="my-thing">
+              <Panel key={key} className="owned-thing">
                 <span>{this.props.list[key].item_name}</span>
                 <Edit items={this.props.list[key]} handleEdit={this.props.edit} />
                 <button type="submit" onClick={this.props.onSubmitDelete} className="btn-xs btn-danger" value={this.props.list[key].item_id}>
