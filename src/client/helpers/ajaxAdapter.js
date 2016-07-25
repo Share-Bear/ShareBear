@@ -55,10 +55,11 @@ const ajaxAdapter ={
         item_name: item.name,
         item_desc: item.desc,
         owner_id: item.owner})
-      }).then( r=> {
-
-        console.log(r)
-        r.json()
+      }).then(res=>{
+      return res.json()
+      }).then( res=> {
+        console.log(res)
+        return res
     })
   },
   updateItem(item, name, desc){

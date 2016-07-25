@@ -46,7 +46,7 @@ export default class PostNew extends React.Component{
           <Modal.Header closeButton>
             <Modal.Title> Post an item you'd like to loan!</Modal.Title>
           </Modal.Header>
-          <form onSubmit = {this.handleSubmit.bind(this)}>
+          <form onSubmit = {this.props.addItem}>
             <input type="text" className="form-control input-lg" name="item_name" placeholder="Name of Item" />
             <input type="text" className="form-control input-lg" name="item_desc" placeholder="Desc of Item" />
             <Button type="submit" onClick={this.close.bind(this)}>Submit</Button>
