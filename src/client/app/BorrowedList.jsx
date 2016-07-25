@@ -14,7 +14,7 @@ export default function UserBorrowedList(props) {
               <strong>{props.list[key].item_name}</strong> {props.list[key].item_desc}
               <button className="borrowed btn btn-info"type="submit" onClick={props.onSubmitReturn} value={props.list[key].item_id}>
               Returned</button>
-            </li>
+             </Panel>
           ))
         }
       </div>
