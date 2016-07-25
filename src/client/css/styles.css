@@ -1,7 +1,7 @@
 /* Custom CSS to be delivered into the 'dist/' directory */
 @import url(https://fonts.googleapis.com/css?family=Quicksand);
 @import  url('https://fonts.googleapis.com/css?family=Oswald');
-@import url(https://fonts.googleapis.com/css?family=Muli:300:300);
+@import url(https://fonts.googleapis.com/css?family=Oswald:300);
 
 /*li{
   display: inline;
@@ -14,16 +14,15 @@ body {
   background-color: #F5F5F5;
 }
 .jumbotron h1 {
-    font-family: 'Muli:300', sans-serif;
+    font-family: 'Oswald', sans-serif;
     padding:20px;
     font-weight: 900;
-    color: #212121;
+    color: #616161;
 
   }
 
   div .jumbotron {
     background-color: #FAFAFA;
-     border-bottom: .25px solid #ccc;
   }
 
   .jumbotron h3, span {
@@ -32,16 +31,16 @@ body {
 
   }
 h1 {
-    font-family: 'Muli:300', sans-serif;
+    font-family: 'Oswald', sans-serif;
     font-weight: 700;
   }
 h2 {
-    font-family: 'Muli:300', sans-serif;
+    font-family: 'Oswald', sans-serif;
     font-weight: 700;
   }
 
 h3 {
-    font-family: 'Muli:300', sans-serif;
+    font-family: 'Oswald', sans-serif;
     padding:20px;
 
 }
@@ -65,7 +64,7 @@ li{
 
 .navbar{
   height: 30px;
-  background-color: #E0E0E0;
+  background-color: #616161;
   margin: 0px;
   border: none;
   border-radius: 0px
@@ -89,7 +88,6 @@ button  {
 .jumbotron {
 
   width: 100%;
-  box-shadow: 10px 5px 2px #888888;
   text-align: center;
   /*box-shadow: 2px 2px 10px 5px #C9C9C9;*/
   color: white
@@ -97,6 +95,7 @@ button  {
 
 .item-list h1 {
   color: #0FA3B1;
+  text-align: left
 }
 .post-container {
   width: 60%;
@@ -115,6 +114,11 @@ button  {
 }
 
 .post-new-btn:hover{
+  background-color: #ff3300;
+  color:white;
+}
+
+.post-new-btn{
     background-color: #FF5722;
     color: white;
 }
@@ -128,7 +132,7 @@ button  {
 }
 
 .item-list{
-  background-color: #f3f9f9;
+  background-color: white;
   /*box-shadow:2px 2px 10px 10px #C9C9C9;*/
   text-align: center;
   margin-right: 10%;
@@ -144,23 +148,24 @@ button  {
 .item-panel{
   width: 94%;
   margin: 0 auto;
+  color: #616161
 }
 
 .users-things{
   width: 40%;
   margin: auto;
   float: left;
-  background-color: #f3f9f9;
+  background-color: white;
   /*box-shadow:2px 2px 10px 10px #C9C9C9;*/
   text-align: center;
 }
 
 
 .logout-btn{
-  background-color: #0FA3B1;
+  background-color: white;
   margin-top: 10px;
   margin-right: 80px;
-  color: white;
+  color: #616161;
   border: none;
 }
 
@@ -174,16 +179,24 @@ button  {
 }
 
 .item-panel-btn {
+  color: #616161;
   width: 100%;
   margin: 0px;
   text-align: left;
 }
 
+.modal-content *{
+  padding: 3px;
+  margin: 3px;
+}
+
 .panel-heading {
+  color: #616161;
   padding: 0px;
 }
 
 .panel-body {
+  color: #616161;
   width: 100%;
   margin: 0;
   text-align: left;
@@ -209,9 +222,14 @@ button  {
 /*  Borrow Button */
 .borrow-btn {
   color: white;
-  background-color: #FF5722;
+  background-color: #0FA3B1;
   width: 100px;
   margin: 0 35%;
+}
+
+.borrow-btn:hover{
+  background-color: #00cccc;
+  color: white;
 }
 
 
@@ -233,7 +251,8 @@ button  {
   border:none;
 }
 .zip-btn:hover {
-  background-color: #0FA3B1;
+  background-color: #00cccc;
+  color: white;
   margin-top:5px;
   height: 40px;
   border:none;
@@ -266,6 +285,7 @@ button  {
 
 .ownedContainer h2 {
   color: #FF5722;
+  text-align: left
 
 }
 
@@ -276,27 +296,46 @@ button  {
 }
 
 .items-container {
-  background-color: #f3f9f9;
+  background-color: white;
   text-align: center;
   padding: 10px;
+  color: #616161;
 }
 
-.items-container h2 {
-    color: #FF5722;
+
+.owned-hdr {
+    color: #0FA3B1;
+    text-align: left
+}
+
+.borrow-hdr {
+    color: #616161;
+    text-align: left
 }
 
 .return-btn {
   color: white;
-  background-color: #0FA3B1;
+  background-color: #616161;
   border: none;
   float: right;
 }
-.my-thing {
+.borrowed-thing {
   font-family: 'Oswald', sans-serif;
   color: black;
   padding: 0px;
   margin: 0px;
   text-align: left;
+  border: none;
+  border-bottom: .25px dashed #ccc;
+}
+
+.owned-thing {
+  font-family: 'Oswald', sans-serif;
+  color: black;
+  padding: 0px;
+  margin: 0px;
+  text-align: left;
+
 }
 
 .btn-danger {

@@ -169,7 +169,7 @@ export default class App extends React.Component{
         addItem={this.addUser.bind(this)} />
         </div>
       )
-      UserItemMargin={"margin": "auto 20%"}
+      UserItemMargin={"margin": "auto 30%"}
     }
 
     return (
