@@ -225,6 +225,7 @@ button  {
   background-color: #0FA3B1;
   width: 100px;
   margin: 0 35%;
+  border: none;
 }
 
 .borrow-btn:hover{
@@ -315,10 +316,17 @@ button  {
 
 .return-btn {
   color: white;
-  background-color: #616161;
+  background-color: #ccc;
   border: none;
   float: right;
 }
+
+
+.return-btn:hover {
+  background-color: #616161;
+}
+
+
 .borrowed-thing {
   font-family: 'Oswald', sans-serif;
   color: black;
@@ -342,4 +350,3 @@ button  {
   border: none;
   float: right;
 }
-
