@@ -96,7 +96,7 @@ button  {
 }
 
 .item-list h1 {
-  color: #FF5722;
+  color: #0FA3B1;
 }
 .post-container {
   width: 60%;
@@ -265,7 +265,8 @@ button  {
 
 
 .ownedContainer h2 {
-  color: #0FA3B1;
+  color: #FF5722;
+
 }
 
 .ownedContainer {
@@ -281,7 +282,7 @@ button  {
 }
 
 .items-container h2 {
-    color: #0FA3B1;
+    color: #FF5722;
 }
 
 .return-btn {
