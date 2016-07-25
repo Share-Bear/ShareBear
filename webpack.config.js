@@ -8,11 +8,31 @@ const BUILD_DIR         = path.resolve(__dirname, 'dist');
 const APP_DIR           = path.resolve(__dirname, 'src/client/app');
 
 module.exports = {
- entry: `${APP_DIR}/main.jsx`,
- output: {
-   path: BUILD_DIR,
-   filename: '/js/[name].js',
- },
+  entry: `${APP_DIR}/main.jsx`,
+  output: {
+    path: BUILD_DIR,
+    filename: '/js/[name].js',
+  },
+  cache: true,
+  debug: true,
+  devtool: 'eval-source-map',
+  stats: {
+    colors: true,
+    reasons: true
+  },
+  plugins: [
+    new HtmlWebpackPlugin({
+      title: 'ShareBear',
+      xhtml: true,
+      inject: false,
+      template: require('html-webpack-template'),
+      appMountId: 'container'
+    }),
+    new ExtractTextPlugin('/css/[name].css', {
+      allChunks: true
+    })
+  ],
+
 
  plugins: [
 /*    new webpack.optimize.UglifyJsPlugin({
