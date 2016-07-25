@@ -6,9 +6,9 @@ import Edit             from './EditButton.jsx'
 export default class UserOwnedList extends React.Component{
   render(){
     return(
-      <div className="list-group">
+      <div className="list-group items-container">
       <h2>Items You've Posted</h2>
-        <ul>
+        <div>
           {Object.keys(this.props.list)
             .map(key=>(
               <Panel key={key} className="my-thing">
@@ -20,7 +20,7 @@ export default class UserOwnedList extends React.Component{
               </Panel>
             ))
           }
-        </ul>
+        </div>
       </div>
     )
   }

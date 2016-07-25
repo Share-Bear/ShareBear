@@ -22,11 +22,11 @@ export default class ItemList extends React.Component{
 
     if(this.props.currentUser){
       borrowBtn=(
-        <button className="borrow btn btn-info"
+        <Button className="borrow-btn"
               type="button" value={this.props.item.item_id}
               onClick={this.props.onSubmitBorrow}>
               borrow this!
-        </button>
+        </Button>
       )
     }
     return (
@@ -34,7 +34,7 @@ export default class ItemList extends React.Component{
         expanded={this.state.open}
         className='item-panel'
         header={
-          <Button onClick={this.handleClick.bind(this)}>
+          <Button className="item-panel-btn" onClick={this.handleClick.bind(this)}>
             {this.props.item.item_name}
           </Button>
         }
