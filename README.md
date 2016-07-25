@@ -1,6 +1,10 @@
 # ShareBear
 A website for neighbors to share items with other neighbors
 
+###Description
+Share bear is a lending application offering users the ability to register and share items with their neighbors.  Guest will be able search by zipcode and  browse through a list of available items to borrow.  Registered users can either list items or make arrangements to borrow an item. Once an item is lent the status will move to "checked out".  
+See user stories for a more detailed account of Share Bear's overall functionality.
+
 ## User Stories
 
 ### Core Features:
