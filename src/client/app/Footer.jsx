@@ -6,7 +6,7 @@ const Footer = props=>(
   <footer className="page-footer orange text-center">
     <div className="footer-copyright">
       <div className="container">
-        <p>Property of ShareBear</p>
+        <p>Property of ShareBear!</p>
       </div>
     </div>
   </footer>
