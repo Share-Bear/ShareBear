@@ -12,8 +12,8 @@ export default function UserBorrowedList(props) {
           .map(key=>(
             <Panel key={key} className="borrowed-thing">
               <strong>{props.list[key].item_name}</strong> {props.list[key].item_desc}
-              <button className="borrowed btn btn-info"type="submit" onClick={props.onSubmitReturn} value={props.list[key].item_id}>
-              Returned</button>
+              <button className="btn-xs return-btn "type="submit" onClick={props.onSubmitReturn} value={props.list[key].item_id}>
+              Return</button>
              </Panel>
           ))
         }
