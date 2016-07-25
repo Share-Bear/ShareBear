@@ -1,25 +1,28 @@
 /* Custom CSS to be delivered into the 'dist/' directory */
 @import url(https://fonts.googleapis.com/css?family=Quicksand);
 @import  url('https://fonts.googleapis.com/css?family=Oswald');
-
+@import url(https://fonts.googleapis.com/css?family=Muli:300:300);
 
 /*li{
   display: inline;
 }*/
 
+/*#0FA3B1
+#FF5722*/
+
 body {
-  background-color: #F5F5F5
+  background-color: #F5F5F5;
 }
 .jumbotron h1 {
-    font-family: 'Oswald', sans-serif;
+    font-family: 'Muli:300', sans-serif;
     padding:20px;
     font-weight: 900;
-    color: #E54028;
+    color: #212121;
 
   }
 
   div .jumbotron {
-    background-color: #FFF;
+    background-color: #FAFAFA;
      border-bottom: .25px solid #ccc;
   }
 
@@ -29,21 +32,26 @@ body {
 
   }
 h1 {
-    font-family: 'Oswald', sans-serif;
-    padding:20px;
+    font-family: 'Muli:300', sans-serif;
     font-weight: 700;
   }
 h2 {
-    font-family: 'Oswald', sans-serif;
-    padding:20px;
+    font-family: 'Muli:300', sans-serif;
     font-weight: 700;
   }
 
 h3 {
-    font-family: 'Oswald', sans-serif;
+    font-family: 'Muli:300', sans-serif;
     padding:20px;
 
+}
 
+span{
+  text-align: left
+}
+
+li{
+  text-align: left
 }
 
 .login-form{
@@ -57,7 +65,7 @@ h3 {
 
 .navbar{
   height: 30px;
-  background-color: #616161;
+  background-color: #E0E0E0;
   margin: 0px;
   border: none;
   border-radius: 0px
@@ -68,24 +76,27 @@ h3 {
   margin: auto;
 }
 
+
 button  {
   font-size: 8px;
-  margin: 8px;
+  margin: auto 8px;
   font-family: 'Oswald', sans-serif;
 
 }
 
+
+
 .jumbotron {
 
   width: 100%;
+  box-shadow: 10px 5px 2px #888888;
   text-align: center;
   /*box-shadow: 2px 2px 10px 5px #C9C9C9;*/
   color: white
 }
 
 .item-list h1 {
-
-  color: #61AE24;
+  color: #FF5722;
 }
 .post-container {
   width: 60%;
@@ -94,17 +105,17 @@ button  {
 }
 
 .post-new-btn{
-  margin-top: 5px;
+  margin-top: 25px;
   height: 60px;
   width: 500px;
-  background-color: #01A4A4;
+  background-color: #FF5722;
   border: none;
   font-size: 18px;
   color: white;
 }
 
 .post-new-btn:hover{
-    background-color: #00cccc;
+    background-color: #FF5722;
     color: white;
 }
 
@@ -117,9 +128,12 @@ button  {
 }
 
 .item-list{
-  background-color: white;
+  background-color: #f3f9f9;
   /*box-shadow:2px 2px 10px 10px #C9C9C9;*/
-  width: 60%;
+  text-align: center;
+  margin-right: 10%;
+  padding: 20px;
+  width: 40%;
   float: left;
 }
 
@@ -128,17 +142,31 @@ button  {
 }
 
 .item-panel{
-  width: 90%;
+  width: 94%;
+  margin: 0 auto;
 }
 
 .users-things{
   width: 40%;
   margin: auto;
-  float: left
+  float: left;
+  background-color: #f3f9f9;
+  /*box-shadow:2px 2px 10px 10px #C9C9C9;*/
+  text-align: center;
+}
+
+
+.logout-btn{
+  background-color: #0FA3B1;
+  margin-top: 10px;
+  margin-right: 80px;
+  color: white;
+  border: none;
 }
 
 .users-things button{
-  margin-top: 0px
+  margin-top: 0px;
+
 }
 
 .edit-container {
@@ -146,8 +174,22 @@ button  {
   margin-right: 0px;
 }
 
+.item-panel-btn {
+  width: 100%;
+  margin: 0px;
+  text-align: left;
+}
 
+.panel-heading {
+  padding: 0px;
+}
 
+.panel-body {
+  width: 100%;
+  margin: 0;
+  text-align: left;
+  padding: 6px 12px;
+}
 
 .left {
   width:50%;
@@ -167,14 +209,22 @@ button  {
 
 /*  Borrow Button */
 .borrow.btn {
+  background-color: #32742C;
+    border-color: #32742C;
+}
 
-  background-color: #64B6B1;
-  border-color: #64B6B1;
+.borrow.btn.btn-info:hover {
+
+
+  background-color: #61AE24;
+    border-color: #61AE24;
 }
 
 
 .edit-btn{
 
+background-color: #01A4A4;
+border-color: #01A4A4; ;
 }
 
 .itemListAc .panel-default  .panel-heading {
@@ -185,20 +235,21 @@ button  {
 }
 
 .zip-btn {
-  background-color: #32742C;;
+  background-color: #0FA3B1;
   margin-top:5px;
   height: 40px;
   border:none;
 }
 .zip-btn:hover {
-  background-color: #61AE24;
+  background-color: #0FA3B1;
   margin-top:5px;
   height: 40px;
   border:none;
 }
 
+
 /*.zip.btn.btn-primary:hover {
-  background-color: #61AE24;
+  background-color: #FF5722;
 }*/
 
 .bigBody {
@@ -223,15 +274,52 @@ button  {
 
 
 .ownedContainer h2 {
-  color: #01A4A4;
+  color: #0FA3B1;
+}
+
+.borrowedContainer * {
+color: #616161;;
+font-family: 'Oswald', sans-serif;
+margin:5px;
+
+}
+
+.borrowedContainer li {
+  width:auto;
+  margin:5px;
+  padding:10px;
+  font-size: 1.2em;
+  border-bottom: .25px dashed #ccc;
+  display: inline-block;
+}
+
+
+.borrowed.btn.btn-info {
+padding:5px;
+float: right;
+background-color: #ccc;
+color:#FFF;
+border-color:#ccc;
+}
+.borrowed.btn.btn-info:hover {
+
+background-color: #616161;
+color:#FFF;
+border-color:#ccc;
 }
 
 
 
+.users-things span{
 
-.list-group {
+  font-family: 'Oswald', sans-serif;
+  font-size: 16px;
+  color: #01A4A4;
+}
 
-
+.btn-danger {
+  border: none;
+  float: right;
 }
 
 

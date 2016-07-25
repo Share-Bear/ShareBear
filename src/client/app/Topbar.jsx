@@ -26,7 +26,7 @@ export default class TopBar extends React.Component{
 
     if(this.props.currentUser){
       userNav=(
-        <Button type="submit" className="right" onClick= {this.props.clearLocalStorage} >Logout</Button>
+        <Button type="submit" className="right logout-btn" onClick= {this.props.clearLocalStorage} >Logout</Button>
       )
     } else {
       userNav =(
@@ -37,7 +37,7 @@ export default class TopBar extends React.Component{
             <div className = "login-input col-xs-2">
               <input type="password" className="form-control inputdefault col-xs-2" name="password_digest" placeholder="password" />
             </div>
-            <Button type="submit">Submit</Button>
+            <Button type="submit" className="logout-btn">Submit</Button>
           </form>
       )
     }
